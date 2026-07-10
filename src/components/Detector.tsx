@@ -289,7 +289,6 @@ export default function Detector() {
             <h4>Why {primary.shape.toLowerCase()} scored highest</h4>
             <ul className="check-list">{result.reasons.map((reason) => <li key={reason}>{reason}</li>)}</ul>
             <div className="quality-note"><strong>Photo-quality note:</strong> {result.note}</div>
-            <div className="limitation"><strong>Important limitation:</strong> MediaPipe supplies landmarks, not a face-shape diagnosis. Categories overlap, and hairline, facial hair, expression, perspective, and hidden contours can change the estimate.</div>
             <div className="button-row">
               <Link className="button" href={`/face-shapes/${primary.shape.toLowerCase()}/`}>Read the {primary.shape.toLowerCase()} guide</Link>
               <button className="button secondary" type="button" onClick={downloadCard}>Download result card</button>
