@@ -12,9 +12,9 @@ export const siteConfig = {
     "A private, browser-based face shape estimator with practical guides to facial proportions, hairstyles, and glasses.",
   socialProfiles: [] as string[],
   searchConsoleVerification: "",
-  analyticsId: "",
+  analyticsId: "G-8TH7Q6YHF1",
   adsensePublisherId: "",
-  analyticsEnabled: false,
+  analyticsEnabled: true,
   advertisingEnabled: false,
 } as const;
 

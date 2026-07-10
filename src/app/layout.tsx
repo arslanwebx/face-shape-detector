@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { absoluteUrl, siteConfig } from "@/config/site";
 
 const poppins = Poppins({
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Header />
         {children}
         <Footer />
+        {siteConfig.analyticsEnabled && <GoogleAnalytics measurementId={siteConfig.analyticsId} />}
       </body>
     </html>
   );
