@@ -180,17 +180,17 @@ export default function Detector() {
     ctx.fillStyle = "#6d4aff";
     ctx.fillRect(0, 0, 22, canvas.height);
     ctx.fillStyle = "#1f2030";
-    ctx.font = "600 30px Arial";
+    ctx.font = "600 30px Poppins, Arial";
     ctx.fillText(siteConfig.brandName, 72, 78);
-    ctx.font = "700 64px Arial";
+    ctx.font = "700 64px Poppins, Arial";
     ctx.fillText(`Estimated shape: ${result.matches[0].shape}`, 72, 178);
     ctx.fillStyle = "#5f6072";
-    ctx.font = "30px Arial";
+    ctx.font = "400 30px Poppins, Arial";
     ctx.fillText("Similarity scores from one browser-processed photo", 72, 230);
     result.matches.slice(0, 3).forEach((match, index) => {
       const y = 312 + index * 76;
       ctx.fillStyle = "#1f2030";
-      ctx.font = "600 28px Arial";
+      ctx.font = "600 28px Poppins, Arial";
       ctx.fillText(match.shape, 72, y);
       ctx.fillStyle = "#ebe7fb";
       ctx.fillRect(250, y - 24, 650, 30);
@@ -200,7 +200,7 @@ export default function Detector() {
       ctx.fillText(`${match.score}%`, 930, y);
     });
     ctx.fillStyle = "#5f6072";
-    ctx.font = "24px Arial";
+    ctx.font = "400 24px Poppins, Arial";
     ctx.fillText("Estimate only. Your photo is not included in this privacy-safe card.", 72, 575);
     const link = document.createElement("a");
     link.download = `${result.matches[0].shape.toLowerCase()}-face-shape-result.png`;

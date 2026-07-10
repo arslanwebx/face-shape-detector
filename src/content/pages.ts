@@ -1,5 +1,6 @@
 import type { ContentPage } from "./types";
 import { comparisonHeaders, comparisonRows } from "./shared";
+import { newArticles } from "./newArticles";
 
 const published = "2026-07-10";
 const detectorLink = {
@@ -326,7 +327,7 @@ export const pages: ContentPage[] = [
     description: "Read clear face-shape comparisons, learn why photo results vary, and understand how mixed facial characteristics fit overlapping categories.",
     eyebrow: "Learning centre",
     intro: "These focused guides answer the questions that arise after a first face-shape estimate. Compare similar outlines, improve photo consistency, and understand why a secondary match can be useful rather than contradictory.",
-    kind: "blog-index", published, modified: published, image: "/og/blog.svg", imageAlt: "Notebook-style face outline comparison illustrations",
+    kind: "blog-index", published, modified: published, image: "/images/blog/mixed-face-shapes.jpg", imageAlt: "Illustrated face with overlapping face-shape contours",
     sections: [
       { heading: "Compare similar outlines", paragraphs: ["Small differences in length, side curvature, and jaw taper often separate the closest matches. Start with the comparison that reflects your top two results."], },
       { heading: "Improve the input", paragraphs: ["A classification is only as useful as the photo. Learn how camera distance, lens perspective, head angle, lighting, hair, and expression affect the visible outline before treating two different results as a contradiction."], },
@@ -348,21 +349,21 @@ export const pages: ContentPage[] = [
     description: "Compare round and oval faces side by side using visible length, cheek width, jawline curve, chin shape, camera angle, and a simple manual test.",
     eyebrow: "Shape comparison",
     intro: "A round face has length and width that are relatively close, while an oval face is more noticeably longer than wide. Both can have prominent cheeks and a soft jaw, so the length-to-width relationship and the amount of taper below the cheeks are the most useful differences.",
-    kind: "article", published, modified: published, image: "/og/blog.svg", imageAlt: "Round and oval face outlines shown side by side",
+    kind: "article", published, modified: published, topic: "Face-shape comparisons", image: "/images/blog/round-vs-oval-face.jpg", imageAlt: "Illustrated round and oval face shapes shown side by side", imageCaption: "Round and oval outlines can share soft curves, but the oval pattern carries more visible length.",
     sections: [
       { heading: "Side-by-side differences", table: { headers: ["Feature", "Round", "Oval"], rows: [["Visible length", "Close to maximum width", "Moderately greater than width"], ["Cheeks", "Often create broad, curved width", "Usually the widest point but less dominant"], ["Jawline", "Continuous soft curve", "Soft curve with more taper"], ["Chin", "Rounded and integrated into curve", "Rounded, sometimes slightly narrower"], ["Overall outline", "Circular impression", "Elongated curved impression"]] } },
       { heading: "A two-minute manual test", bullets: ["Use a neutral, front-facing photo from eye level.", "Mark the visible top reference and bottom of the chin to estimate length.", "Compare that distance with the widest cheek-to-cheek span.", "Trace the lower outline: look for a broad arc or a longer taper.", "Repeat from a second photo only if distance and angle match."] },
       { heading: "Why cheeks cause confusion", paragraphs: ["Both shapes can look widest around the cheekbones. Cheek fullness alone cannot decide the category. On a round face, the cheek width is a larger part of the total silhouette because length is comparatively short. On an oval face, the longer vertical axis changes the overall impression."], },
       { heading: "Camera angle can reverse the result", paragraphs: ["A close phone camera can enlarge the centre of the face and make cheeks look wider. A high camera may narrow the chin and lengthen the lower outline. A low camera can widen the jaw. Step back, keep the lens at eye level, and avoid strong head tilt."], },
       { heading: "Mixed round-oval characteristics", paragraphs: ["If the length is only slightly greater than width and the jaw tapers softly, both labels may fit. Use round styling ideas when thinking about cheek width and oval ideas when thinking about the jaw. A secondary match does not invalidate the primary estimate."], },
-      { heading: "The practical conclusion", paragraphs: ["Choose oval when the face is clearly elongated with a gradual lower taper. Choose round when width and length are closer and the entire outline reads as a soft curve. Keep both when the difference is small."], },
+      { heading: "The practical conclusion", paragraphs: ["Choose oval when the face is clearly elongated with a gradual lower taper. Choose round when width and length are closer and the entire outline reads as a soft curve. Keep both when the difference is small.", "Compare the full [round face guide](/face-shapes/round/) and [oval face guide](/face-shapes/oval/), then use the [manual measurement method](/how-to-find-your-face-shape/) or [analyze a clear photo privately](/#detector) to check the same features."] },
     ],
     faqs: [
       { question: "Can a round face have a narrow chin?", answer: "It can have some taper, but a clearly narrow or pointed chin may bring oval or heart characteristics into the comparison." },
       { question: "Does smiling make an oval face look round?", answer: "Yes. Smiling can broaden the cheeks and shorten the visible lower face. Use a relaxed expression for comparison." },
       { question: "Which measurement matters most?", answer: "Start with visible length compared with maximum width, then use jaw taper and chin shape to confirm." },
     ],
-    related: [{ href: "/face-shapes/round/", label: "Study the round outline", description: "Review its complete proportion and style profile." }, { href: "/face-shapes/oval/", label: "Study the oval outline", description: "See how moderate length and taper work together." }, detectorLink],
+    related: [{ href: "/face-shapes/round/", label: "Study the round outline", description: "Review its complete proportion and style profile." }, { href: "/face-shapes/oval/", label: "Study the oval outline", description: "See how moderate length and taper work together." }, { href: "/blog/round-vs-square-face/", label: "Round face vs square face", description: "Use jaw corners to separate two compact outlines." }, { href: "/how-to-find-your-face-shape/", label: "Manual measurement hub", description: "Cross-check length, width, jaw, and chin." }, detectorLink],
   },
   {
     path: "/blog/oval-vs-oblong-face/",
@@ -371,21 +372,21 @@ export const pages: ContentPage[] = [
     description: "Tell oval and oblong faces apart by comparing length-to-width ratio, side curvature, cheekbone emphasis, jawline, hairstyle effects, and photos.",
     eyebrow: "Shape comparison",
     intro: "Oval and oblong faces are both longer than they are wide. An oblong face has a stronger vertical emphasis and often straighter sides, while an oval face is moderately elongated with more curve through the cheeks and a smoother taper toward the jaw.",
-    kind: "article", published, modified: published, image: "/og/blog.svg", imageAlt: "Oval and oblong face outlines with length markers",
+    kind: "article", published, modified: published, topic: "Face-shape comparisons", image: "/images/blog/oval-vs-oblong-face.jpg", imageAlt: "Illustrated oval and oblong face shapes with proportion guide lines", imageCaption: "Both outlines are longer than wide; stronger length and straighter sides point toward oblong.",
     sections: [
       { heading: "The ratio is a relationship, not a cutoff", paragraphs: ["No universal decimal separates the categories. Look for whether length merely exceeds width or clearly dominates it, then confirm with the side outline. Camera distance and cropping make exact ratios unreliable across unrelated photos."], },
       { heading: "Feature comparison", table: { headers: ["Observation", "Oval", "Oblong"], rows: [["Length-to-width", "Moderately elongated", "Strongly elongated"], ["Cheekbones", "Create a gentle outward curve", "May be widest but sides remain even"], ["Side outline", "Curves and tapers", "Often straighter or parallel"], ["Jaw", "Softly narrows", "May retain more width"], ["Chin", "Rounded", "Rounded, broad, or softly square"]] } },
       { heading: "Try this measurement sequence", bullets: ["Measure visible length and maximum width on the same straight photo.", "Ignore hairstyle height and do not guess an obscured hairline.", "Compare upper-face, cheek, and jaw widths.", "Choose oval if the cheek curve and taper are clear; choose oblong if length and even side width dominate."] },
       { heading: "Why the jaw may not help immediately", paragraphs: ["Both outlines can have a soft jaw and rounded chin. The difference often appears above the jaw: oval curves outward at the cheeks and back in, while oblong can maintain a similar width for more of its height."], },
       { heading: "Hairstyles can disguise the boundary", paragraphs: ["A tall style with close sides makes an oval outline appear longer. A fringe and wide side volume make an oblong outline appear shorter. Pull hair away for identification, then use those same effects deliberately when styling."], },
-      { heading: "When both descriptions fit", paragraphs: ["An oval-oblong mix is especially common because the categories sit next to each other along a length continuum. Treat the primary result as the closest summary and use the secondary result to refine hair volume or lens depth choices."], },
+      { heading: "When both descriptions fit", paragraphs: ["An oval-oblong mix is especially common because the categories sit next to each other along a length continuum. Treat the primary result as the closest summary and use the secondary result to refine hair volume or lens depth choices.", "Review the complete [oval](/face-shapes/oval/) and [oblong](/face-shapes/oblong/) guides, then use the [hairstyle hub](/hairstyles-by-face-shape/) to choose an effect feature by feature. You can also [analyze a consistent photo](/#detector) in your browser."] },
     ],
     faqs: [
       { question: "Is oblong simply a long oval?", answer: "They overlap, but oblong generally adds straighter sides and a stronger length-to-width difference rather than only extra length." },
       { question: "Can a square jaw occur on an oblong face?", answer: "Yes. That may also be described as rectangular, but this site's seven-category system keeps it under oblong with square characteristics." },
       { question: "Should I measure from the hairline?", answer: "Only if it is clearly visible and you use it consistently. Otherwise use a stable visible upper-face reference and describe the measurement honestly." },
     ],
-    related: [{ href: "/face-shapes/oval/", label: "Read the oval guide", description: "Check cheek curve and lower taper." }, { href: "/face-shapes/oblong/", label: "Read the oblong guide", description: "Check vertical emphasis and straighter sides." }, detectorLink],
+    related: [{ href: "/face-shapes/oval/", label: "Read the oval guide", description: "Check cheek curve and lower taper." }, { href: "/face-shapes/oblong/", label: "Read the oblong guide", description: "Check vertical emphasis and straighter sides." }, { href: "/blog/round-vs-oval-face/", label: "Round face vs oval face", description: "Compare a compact curved outline with moderate length." }, { href: "/face-shapes/", label: "All face-shape guides", description: "Place both patterns in the seven-shape reference." }, detectorLink],
   },
   {
     path: "/blog/why-face-shape-results-change-between-photos/",
@@ -394,7 +395,7 @@ export const pages: ContentPage[] = [
     description: "Learn how camera distance, lens distortion, height, head tilt, expression, light, hair, jaw visibility, and blur can change a face-shape estimate.",
     eyebrow: "Photo troubleshooting",
     intro: "Face-shape results change because a photograph is a perspective projection, not a perfect physical measurement. Camera distance, lens choice, head position, expression, light, hair, and image quality can all change the visible landmarks and outline used by a detector or a person.",
-    kind: "article", published, modified: published, image: "/og/blog.svg", imageAlt: "Same abstract face viewed from different camera positions",
+    kind: "article", published, modified: published, topic: "Photo accuracy", image: "/images/blog/face-shape-results-change-photos.jpg", imageAlt: "The same illustrated face shown from three camera positions", imageCaption: "Camera distance, height, and head position can alter the proportions visible in a photograph.",
     sections: [
       { heading: "Distance changes perspective", paragraphs: ["When a phone is close, parts nearest the lens appear larger relative to the sides. Moving farther away and using modest optical zoom or cropping later usually creates a more natural-looking proportion relationship."], },
       { heading: "Camera height changes the taper", paragraphs: ["A high lens looks down toward the chin and can make the upper face appear wider. A low lens can enlarge the jaw and underside of the chin. Set the lens near eye level."], },
@@ -403,14 +404,14 @@ export const pages: ContentPage[] = [
       { heading: "Lighting and image quality affect detection", paragraphs: ["Hard side light can erase one jaw edge and exaggerate the other. Very dark images, blown highlights, motion blur, smoothing filters, and low resolution make landmark placement less stable. Soft frontal light and a clean lens help."], },
       { heading: "Hair and accessories hide the outline", paragraphs: ["Hair across the cheeks or jaw can be mistaken for the face boundary by a person and can reduce the quality of landmark context. Hats hide the upper area; sunglasses obscure eye references; masks and hands hide the lower face. Remove them for the analysis photo where practical."], },
       { heading: "A repeatable photo setup", bullets: ["Clean the camera lens.", "Stand several feet away in soft front light.", "Place the camera at eye level on a stable support.", "Keep the head straight and look into the lens.", "Use a relaxed expression.", "Pull hair away from cheeks and jaw.", "Include one face and keep it large enough in frame.", "Avoid beauty filters and portrait distortions."] },
-      { heading: "When manual comparison is better", paragraphs: ["Use manual measurements when repeated good photos still alternate between two neighbouring categories. Comparing the same length, cheek, upper-face, and jaw references helps you understand which feature causes the overlap."], },
+      { heading: "When manual comparison is better", paragraphs: ["Use manual measurements when repeated good photos still alternate between two neighbouring categories. Comparing the same length, cheek, upper-face, and jaw references helps you understand which feature causes the overlap.", "Follow the [manual identification guide](/how-to-find-your-face-shape/), compare the result with the [seven-shape library](/face-shapes/), and read the focused guide to [phone camera distortion](/blog/phone-camera-distortion-face-shape/) before retaking more photos. The [detector](/#detector) remains an informal private estimate, not a guarantee."] },
     ],
     faqs: [
       { question: "Which camera is best for a face-shape photo?", answer: "A normal phone or camera is sufficient when it is kept at eye level and a moderate distance. Setup consistency matters more than a particular brand." },
       { question: "Should I use the front or rear phone camera?", answer: "Either can work. Rear cameras often offer better quality, while the front camera makes alignment easier. Avoid holding either very close." },
       { question: "Can lighting change my actual face shape?", answer: "No. It changes which edges and contours are visible in the image, which can influence an estimate." },
     ],
-    related: [detectorLink, { href: "/how-to-find-your-face-shape/", label: "Cross-check manually", description: "Compare stable visible measurements step by step." }, { href: "/blog/can-you-have-more-than-one-face-shape/", label: "Understand close matches", description: "Separate photo variation from genuine mixed characteristics." }],
+    related: [detectorLink, { href: "/how-to-find-your-face-shape/", label: "Cross-check manually", description: "Compare stable visible measurements step by step." }, { href: "/blog/phone-camera-distortion-face-shape/", label: "Phone camera distortion", description: "Set distance, height, and perspective more consistently." }, { href: "/blog/can-you-have-more-than-one-face-shape/", label: "Understand close matches", description: "Separate photo variation from genuine mixed characteristics." }, { href: "/face-shapes/", label: "Face-shape guide hub", description: "Compare the visible features behind each result." }],
   },
   {
     path: "/blog/can-you-have-more-than-one-face-shape/",
@@ -419,7 +420,7 @@ export const pages: ContentPage[] = [
     description: "Understand mixed face shapes, overlapping categories, similarity scores, natural variation, photo limitations, and how to use two close matches.",
     eyebrow: "Understanding your result",
     intro: "Yes. A person can have characteristics associated with more than one face-shape category. The labels describe clusters of visible proportions, but real faces vary continuously, so a primary result and one or two close secondary matches can all be useful.",
-    kind: "article", published, modified: published, image: "/og/blog.svg", imageAlt: "Overlapping oval, heart, and diamond outline shapes",
+    kind: "article", published, modified: published, topic: "Face-shape basics", image: "/images/blog/mixed-face-shapes.jpg", imageAlt: "One illustrated face with overlapping oval, heart, and diamond contours", imageCaption: "Overlapping contours show why a primary and secondary face-shape description can both be useful.",
     sections: [
       { heading: "Categories simplify natural variation", paragraphs: ["Seven labels make comparison and styling guidance manageable. They do not create hard biological boundaries. A face can move gradually from oval-like to oblong-like proportions without crossing an objective line that everyone uses."], },
       { heading: "What similarity scores mean", paragraphs: ["This tool compares visible proportion features with project-defined reference patterns. Match scores show how the current photo distributed across those patterns. They are not scientific accuracy or diagnostic confidence, and a close secondary score highlights genuine overlap or uncertain photo evidence."], },
@@ -427,15 +428,16 @@ export const pages: ContentPage[] = [
       { heading: "Separate overlap from a poor photo", paragraphs: ["Retake the image if the face is turned, tilted, small, blurred, unevenly lit, or partly covered. If the same two categories remain close across a consistent photo and a manual check, the mixed description is probably more useful than chasing a single label."], },
       { heading: "Choose styling advice feature by feature", paragraphs: ["You do not need to select one complete rule set. If an oval-oblong mix feels too long with high hair, borrow the oblong principle of side volume. If a heart-diamond mix has prominent cheekbones, use frame width advice from diamond and lower-volume hair ideas from heart."], },
       { heading: "When to try another image", paragraphs: ["Retake once when quality guidance identifies a specific issue. Repeating many uncontrolled selfies is more likely to add noise than clarity. Use a manual comparison after one or two careful attempts."], },
-      { heading: "A useful way to state the result", paragraphs: ["Say, 'My closest match is oval, with some oblong characteristics.' That wording preserves the main pattern and the feature that makes your proportions individual."], },
+      { heading: "A useful way to state the result", paragraphs: ["Say, 'My closest match is oval, with some oblong characteristics.' That wording preserves the main pattern and the feature that makes your proportions individual.", "Use the [face-shape hub](/face-shapes/) to name the overlapping features, apply them flexibly in the [hairstyle guide](/hairstyles-by-face-shape/), and [analyze a controlled photo](/#detector) only when you want another informal comparison. The [heart versus diamond guide](/blog/heart-vs-diamond-face/) shows how this works for two commonly mixed shapes."] },
     ],
     faqs: [
       { question: "Does a mixed result mean the detector failed?", answer: "No. It may reflect real overlap. Check the photo-quality note and compare the actual reasons listed for each score." },
       { question: "Can face shape change over time?", answer: "The visible outline can change with soft tissue, hair, facial hair, and age. The category may shift at the edges even when underlying structure changes little." },
       { question: "Which shape should I use for hairstyles?", answer: "Use the primary pattern as a starting point, then borrow the secondary shape's advice for the specific feature you want to balance or emphasize." },
     ],
-    related: [detectorLink, { href: "/face-shapes/", label: "Compare the seven reference patterns", description: "See which features overlap and which differ." }, { href: "/how-to-find-your-face-shape/", label: "Check your proportions manually", description: "Use a stable photo and simple comparisons." }],
+    related: [detectorLink, { href: "/face-shapes/", label: "Compare the seven reference patterns", description: "See which features overlap and which differ." }, { href: "/how-to-find-your-face-shape/", label: "Check your proportions manually", description: "Use a stable photo and simple comparisons." }, { href: "/blog/heart-vs-diamond-face/", label: "Heart face vs diamond face", description: "See how two neighbouring tapered shapes overlap." }, { href: "/hairstyles-by-face-shape/", label: "Hairstyle guide hub", description: "Choose styling ideas feature by feature." }],
   },
+  ...newArticles,
   {
     path: "/about/",
     title: "About Face Shape Detector",
@@ -585,4 +587,5 @@ export const pages: ContentPage[] = [
   },
 ];
 
+export const blogArticles = pages.filter((page) => page.kind === "article");
 export const pageByPath = new Map(pages.map((page) => [page.path, page]));

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import Logo from "./Logo";
 
 const contentLinks = [
   ["Face Shapes", "/face-shapes/"],
@@ -23,7 +24,7 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="container footer-grid">
-        <div><h2>{siteConfig.brandName}</h2><p>{siteConfig.description}</p><a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a></div>
+        <div><Logo inverse /><p>{siteConfig.description}</p><a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a></div>
         <div><h3>Explore</h3>{contentLinks.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</div>
         <div><h3>Trust and policies</h3>{trustLinks.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</div>
       </div>

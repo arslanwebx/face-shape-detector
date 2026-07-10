@@ -3,6 +3,9 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   trailingSlash: true,
   poweredByHeader: false,
+  turbopack: {
+    root: process.cwd(),
+  },
   async redirects() {
     return [
       {

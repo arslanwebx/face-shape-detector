@@ -21,10 +21,11 @@ src/
   app/                 Routes, metadata files, global styles, and 404 page
   components/          Detector, navigation, footer, content renderer, and form
   config/site.ts       Central brand, domain, contact, analytics, and ad settings
-  content/             Complete page copy and shared face-shape data
+  content/             Complete page copy, blog articles, and shared face-shape data
   lib/                 Landmark measurement, documented thresholds, and scoring
 public/
   faces/               Seven original SVG face-shape illustrations
+  images/blog/         Ten optimized 1200 × 675 article images
   og/                  Branded social images
 ```
 
@@ -68,11 +69,11 @@ To replace the logo, add the new asset under `public/`, keep explicit dimensions
 
 ## Edit content or add a future article
 
-All inner-page content is in `src/content/pages.ts`. Shared face-shape card data is in `src/content/shared.ts`. Each content entry contains a canonical path, unique title and description, fixed dates, sections, FAQs, and related links.
+Core inner-page content is in `src/content/pages.ts`, and the six expanded blog additions are in `src/content/newArticles.ts`. Shared face-shape card data is in `src/content/shared.ts`. Each content entry contains a canonical path, unique title and description, fixed dates, sections, FAQs, and related links.
 
 For a future blog post:
 
-1. Add one complete `ContentPage` entry to `src/content/pages.ts`.
+1. Add one complete `ContentPage` entry to `src/content/pages.ts` or the dedicated article module.
 2. Use a unique path under `/blog/` and a distinct search intent.
 3. Add meaningful internal links from the blog page and relevant guides.
 4. Add or select an original Open Graph image.

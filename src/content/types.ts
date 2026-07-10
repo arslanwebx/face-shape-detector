@@ -5,6 +5,11 @@ export type Section = {
   paragraphs?: string[];
   bullets?: string[];
   table?: { headers: string[]; rows: string[][] };
+  subsections?: {
+    heading: string;
+    paragraphs?: string[];
+    bullets?: string[];
+  }[];
 };
 
 export type PageKind =
@@ -27,6 +32,9 @@ export type ContentPage = {
   modified: string;
   image?: string;
   imageAlt?: string;
+  imageCaption?: string;
+  topic?: string;
+  featured?: boolean;
   sections: Section[];
   faqs?: Faq[];
   related: { href: string; label: string; description: string }[];
