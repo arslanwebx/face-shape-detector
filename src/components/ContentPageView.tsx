@@ -29,6 +29,7 @@ function ArticleMeta({ page }: { page: ContentPage }) {
   const showModified = page.modified !== page.published;
   return (
     <div className="article-meta">
+      {page.kind === "article" && <span>By <Link href={siteConfig.authorPath}>{siteConfig.authorName}</Link></span>}
       <time dateTime={page.published}>Published {formatContentDate(page.published)}</time>
       {showModified && <time dateTime={page.modified}>Updated {formatContentDate(page.modified)}</time>}
       <span>{readingTime(page)} min read</span>
@@ -38,7 +39,8 @@ function ArticleMeta({ page }: { page: ContentPage }) {
 
 export default function ContentPageView({ page }: { page: ContentPage }) {
   const crumbs = breadcrumbItems(page);
-  const schemaType = page.path === "/about/" ? "AboutPage" : page.path === "/contact/" ? "ContactPage" : page.kind === "article" ? "BlogPosting" : page.kind === "trust" || page.kind === "blog-index" ? "WebPage" : "Article";
+  const isAuthorPage = page.path === siteConfig.authorPath;
+  const schemaType = isAuthorPage ? "ProfilePage" : page.path === "/about/" ? "AboutPage" : page.path === "/contact/" ? "ContactPage" : page.kind === "article" ? "BlogPosting" : page.kind === "trust" || page.kind === "blog-index" ? "WebPage" : "Article";
   const pageSchema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": schemaType,
@@ -49,10 +51,11 @@ export default function ContentPageView({ page }: { page: ContentPage }) {
     publisher: { "@type": "Organization", name: siteConfig.publisherName, url: siteConfig.siteUrl, email: siteConfig.contactEmail, contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: siteConfig.contactEmail, url: absoluteUrl("/contact/") }, logo: { "@type": "ImageObject", url: absoluteUrl(siteConfig.logoPath) } },
     image: absoluteUrl(page.image ?? siteConfig.defaultSocialImage),
   };
+  if (isAuthorPage) pageSchema.mainEntity = { "@type": "Person", name: siteConfig.authorName, url: absoluteUrl(siteConfig.authorPath), jobTitle: "Publisher and editor", worksFor: { "@type": "Organization", name: siteConfig.publisherName, url: siteConfig.siteUrl } };
   if (page.modified !== page.published) pageSchema.dateModified = page.modified;
-  if (page.kind === "article") pageSchema.author = { "@type": "Organization", name: siteConfig.editorialName, url: absoluteUrl("/editorial-policy/") };
+  if (page.kind === "article") pageSchema.author = { "@type": "Person", name: siteConfig.authorName, url: absoluteUrl(siteConfig.authorPath) };
 
-  const jsonLd = [
+  const jsonLd: Record<string, unknown>[] = [
     pageSchema,
     {
       "@context": "https://schema.org",
@@ -60,6 +63,13 @@ export default function ContentPageView({ page }: { page: ContentPage }) {
       itemListElement: crumbs.map((crumb, index) => ({ "@type": "ListItem", position: index + 1, name: crumb.label, item: crumb.href ? absoluteUrl(crumb.href) : absoluteUrl(page.path) })),
     },
   ];
+  if (page.faqs?.length) {
+    jsonLd.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: page.faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })),
+    });
+  }
   const showToc = page.kind === "article" && page.sections.length >= 7;
 
   return (

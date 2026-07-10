@@ -7,16 +7,16 @@ import { absoluteUrl, siteConfig } from "@/config/site";
 import { shapes } from "@/content/shared";
 
 export const metadata: Metadata = {
-  title: "Free Face Shape Detector",
-  description: "Upload a front-facing photo for a private browser-based face-shape estimate, then understand the proportions, secondary matches, hairstyles, and glasses guidance.",
+  title: { absolute: "Free Face Shape Detector Online | VisageMetric" },
+  description: "Upload a photo to privately estimate your face shape online. Compare oval, round, square, heart, diamond, oblong and triangle face shapes.",
   alternates: { canonical: absoluteUrl("/") },
   openGraph: {
-    title: "Free Face Shape Detector",
-    description: "Estimate your face shape privately in your browser and understand the visible proportions behind the result.",
+    title: "Free Face Shape Detector Online | VisageMetric",
+    description: "Upload a photo to privately estimate your face shape online. Compare oval, round, square, heart, diamond, oblong and triangle face shapes.",
     url: absoluteUrl("/"),
     images: [{ url: "/og/default.svg", width: 1200, height: 630, alt: "VisageMetric private browser face analysis" }],
   },
-  twitter: { card: "summary_large_image", title: "Free Face Shape Detector", description: "A private, browser-based face-shape estimate with clear explanations.", images: ["/og/default.svg"] },
+  twitter: { card: "summary_large_image", title: "Free Face Shape Detector Online | VisageMetric", description: "Upload a photo to privately estimate your face shape online. Compare all seven common face shapes.", images: ["/og/default.svg"] },
 };
 
 const faqs = [
@@ -35,9 +35,10 @@ const faqs = [
 export default function Home() {
   const jsonLd = [
     { "@context": "https://schema.org", "@type": "WebSite", name: siteConfig.brandName, url: siteConfig.siteUrl, description: siteConfig.description },
-    { "@context": "https://schema.org", "@type": "WebPage", name: "Free Face Shape Detector", url: siteConfig.siteUrl, description: metadata.description },
+    { "@context": "https://schema.org", "@type": "WebPage", name: "Free Face Shape Detector Online", url: siteConfig.siteUrl, description: metadata.description },
     { "@context": "https://schema.org", "@type": "Organization", name: siteConfig.publisherName, url: siteConfig.siteUrl, email: siteConfig.contactEmail, contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: siteConfig.contactEmail, url: absoluteUrl("/contact/") }, logo: absoluteUrl(siteConfig.logoPath) },
     { "@context": "https://schema.org", "@type": "WebApplication", name: siteConfig.brandName, url: siteConfig.siteUrl, applicationCategory: "LifestyleApplication", operatingSystem: "Any modern web browser", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, description: "A browser-based tool that estimates a face-shape pattern from visible facial landmark proportions." },
+    { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) },
   ];
   return (
     <>
@@ -45,7 +46,7 @@ export default function Home() {
       <main id="main-content">
         <section className="hero">
           <div className="container hero-inner">
-            <div className="hero-copy"><p className="eyebrow">No account · No photo upload · Free to use</p><h1>Free Face Shape Detector</h1><p>Upload a clear front-facing photo to estimate your face shape and understand the visible proportions behind the result. Your photo is processed in your browser and is not stored.</p><div className="hero-actions"><Link className="button" href="#detector">Analyze my photo</Link><Link className="text-link" href="/how-to-find-your-face-shape/">Find it manually <span aria-hidden="true">→</span></Link></div><p className="micro-trust"><span aria-hidden="true">✓</span> No registration, beauty score, identity check, or personal profiling.</p></div>
+            <div className="hero-copy"><p className="eyebrow">No account · No photo upload · Free to use</p><h1>Free Face Shape Detector</h1><p>Use our free online face shape detector to estimate whether your face is oval, round, square, heart, diamond, oblong, or triangle. Your photo is processed privately in your browser and is not stored.</p><div className="hero-actions"><Link className="button" href="#detector">Analyze my photo</Link><Link className="text-link" href="/how-to-find-your-face-shape/">Find it manually <span aria-hidden="true">→</span></Link></div><p className="micro-trust"><span aria-hidden="true">✓</span> No registration, beauty score, identity check, or personal profiling.</p></div>
             <div className="hero-visual" aria-label="Original illustrations of seven common face shapes">{shapes.slice(0, 5).map((shape, index) => <div className={`hero-face face-${index}`} key={shape.slug}><Image src={shape.image} alt={`${shape.name} face outline`} width={118} height={138} priority={index === 0} /></div>)}</div>
           </div>
         </section>

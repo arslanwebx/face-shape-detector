@@ -6,6 +6,8 @@ export const siteConfig = {
   contactEmail: "contact@faceshapedetector.online",
   publisherName: "VisageMetric",
   editorialName: "VisageMetric Editorial Team",
+  authorName: "Arslan Ejaz",
+  authorPath: "/authors/arslan-ejaz/",
   logoPath: "/logo.svg",
   defaultSocialImage: "/og/default.svg",
   description:

@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: page.seoTitle,
     description: page.description,
+    authors: isArticle ? [{ name: siteConfig.authorName, url: absoluteUrl(siteConfig.authorPath) }] : undefined,
     alternates: { canonical: absoluteUrl(page.path) },
     openGraph: isArticle
       ? { title: page.seoTitle, description: page.description, url: absoluteUrl(page.path), type: "article", publishedTime: page.published, modifiedTime: page.modified !== page.published ? page.modified : undefined, images: [{ url: image, width: 1200, height: 675, alt: page.imageAlt ?? page.title }] }
