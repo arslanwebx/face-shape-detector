@@ -241,7 +241,10 @@ details p { color: var(--muted); margin-top: -8px; padding-bottom: 18px; }
 .table-of-contents li { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
 .table-of-contents a { font-weight: 500; text-decoration: none; }
 .table-of-contents a:hover { text-decoration: underline; }
-.table-wrap { width: 100%; max-width: 100%; overflow-x: auto; margin: 24px 0; border: 1px solid var(--line); border-radius: 14px; -webkit-overflow-scrolling: touch; }
+.table-wrap { width: 100%; max-width: 100%; overflow-x: auto; overflow-y: hidden; margin: 24px 0; border: 1px solid var(--line); border-radius: 14px; scrollbar-color: #b9afd9 var(--wash); scrollbar-width: thin; touch-action: pan-x pan-y; -webkit-overflow-scrolling: touch; }
+.table-wrap::-webkit-scrollbar { height: 8px; }
+.table-wrap::-webkit-scrollbar-track { background: var(--wash); }
+.table-wrap::-webkit-scrollbar-thumb { border: 2px solid var(--wash); border-radius: 999px; background: #b9afd9; }
 table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 14px; background: white; }
 th, td { padding: 13px 15px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
 thead th { background: var(--wash); color: var(--ink); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
@@ -337,15 +340,10 @@ tr:last-child th, tr:last-child td { border-bottom: 0; }
   .article-card-featured { grid-template-columns: 1fr; }
   .article-card-featured .article-card-image { min-height: 0; aspect-ratio: 16 / 9; }
   .table-of-contents ol { grid-template-columns: 1fr; }
-  .table-wrap { overflow: hidden; border-radius: 12px; }
-  .table-wrap table { min-width: 0; border-collapse: separate; border-spacing: 0; font-size: 14px; }
-  .table-wrap thead { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-  .table-wrap tbody, .table-wrap tr, .table-wrap th, .table-wrap td { display: block; width: 100%; }
-  .table-wrap tbody tr { padding: 0 14px 10px; border-bottom: 1px solid var(--line); }
-  .table-wrap tbody tr:last-child { border-bottom: 0; }
-  .table-wrap tbody th { padding: 14px 0 8px; border: 0; font-size: 15px; line-height: 1.4; }
-  .table-wrap tbody td { display: grid; grid-template-columns: minmax(110px, 30%) minmax(0, 1fr); gap: 12px; padding: 8px 0; border: 0; line-height: 1.55; overflow-wrap: anywhere; }
-  .table-wrap tbody td::before { color: var(--muted); content: attr(data-label); font-size: 11px; font-weight: 700; letter-spacing: .045em; line-height: 1.45; text-transform: uppercase; }
+  .table-wrap { border-radius: 12px; }
+  .table-wrap table { width: 100%; min-width: 600px; font-size: 13px; }
+  .table-wrap th, .table-wrap td { padding: 11px 12px; }
+  .table-wrap thead th { font-size: 11px; }
   .shape-link-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid > div:first-child { grid-column: 1 / -1; }
@@ -390,7 +388,6 @@ tr:last-child th, tr:last-child td { border-bottom: 0; }
   .shape-link-grid { grid-template-columns: 1fr; }
   .article-layout { padding-top: 45px; }
   .table-of-contents, .aside-card, .contact-form { padding: 20px; }
-  .table-wrap tbody td { grid-template-columns: minmax(92px, 36%) minmax(0, 1fr); }
   .mixed-card { padding: 22px; }
   .form-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -412,7 +409,6 @@ tr:last-child th, tr:last-child td { border-bottom: 0; }
   .result-topline { align-items: flex-start; flex-direction: column; gap: 2px; }
   .result-topline > * { margin-bottom: 0; }
   .score-row { grid-template-columns: 92px minmax(0, 1fr) 36px; }
-  .table-wrap tbody td { grid-template-columns: minmax(82px, 34%) minmax(0, 1fr); gap: 10px; }
   .shape-card { display: flex; }
   .shape-card img { width: auto; height: 145px; }
   .shape-card h3 { margin-top: 10px; }
@@ -427,8 +423,6 @@ tr:last-child th, tr:last-child td { border-bottom: 0; }
   .hero-copy h1, .article-hero h1 { font-size: 35px; }
   .button-row .button { width: 100%; }
   .score-row { grid-template-columns: 80px minmax(0, 1fr) 34px; }
-  .table-wrap tbody tr { padding-inline: 12px; }
-  .table-wrap tbody td { grid-template-columns: 1fr; gap: 3px; }
   .brand-wordmark > span { display: none; }
 }
 

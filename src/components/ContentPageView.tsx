@@ -21,7 +21,7 @@ function Table({ headers, rows }: { headers: string[]; rows: string[][] }) {
             <tr key={`${row[0]}-${index}`}>
               {row.map((cell, cellIndex) => cellIndex === 0
                 ? <th key={cellIndex} scope="row"><RichText text={cell} /></th>
-                : <td key={cellIndex} data-label={headers[cellIndex]}><RichText text={cell} /></td>)}
+                : <td key={cellIndex}><RichText text={cell} /></td>)}
             </tr>
           ))}
         </tbody>
