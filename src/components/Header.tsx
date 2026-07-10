@@ -44,12 +44,12 @@ export default function Header() {
           ))}
           <Link className="nav-cta" href="/#detector">Analyze My Face</Link>
         </nav>
-        <button className="menu-button" type="button" aria-label={open ? "Close navigation menu" : "Open navigation menu"} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(!open)}>
+        <button className="menu-button" type="button" aria-label={open ? "Close navigation menu" : "Open navigation menu"} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen((current) => !current)}>
           <span className="menu-lines" aria-hidden="true"><i /><i /><i /></span>
         </button>
       </div>
       {open && (
-        <div className="mobile-menu-panel">
+        <div className="mobile-menu-panel" role="presentation" onClick={(event) => event.target === event.currentTarget && setOpen(false)}>
           <nav id="mobile-menu" className="mobile-nav container" aria-label="Mobile navigation">
             <div className="mobile-menu-heading"><Logo compact /><button className="menu-close" type="button" aria-label="Close navigation menu" onClick={() => setOpen(false)}>Close <span aria-hidden="true">×</span></button></div>
             {links.map(([label, href]) => (
