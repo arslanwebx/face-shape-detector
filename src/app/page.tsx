@@ -36,7 +36,7 @@ export default function Home() {
   const jsonLd = [
     { "@context": "https://schema.org", "@type": "WebSite", name: siteConfig.brandName, url: siteConfig.siteUrl, description: siteConfig.description },
     { "@context": "https://schema.org", "@type": "WebPage", name: "Free Face Shape Detector", url: siteConfig.siteUrl, description: metadata.description },
-    { "@context": "https://schema.org", "@type": "Organization", name: siteConfig.publisherName, url: siteConfig.siteUrl, logo: absoluteUrl(siteConfig.logoPath) },
+    { "@context": "https://schema.org", "@type": "Organization", name: siteConfig.publisherName, url: siteConfig.siteUrl, email: siteConfig.contactEmail, contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: siteConfig.contactEmail, url: absoluteUrl("/contact/") }, logo: absoluteUrl(siteConfig.logoPath) },
     { "@context": "https://schema.org", "@type": "WebApplication", name: siteConfig.brandName, url: siteConfig.siteUrl, applicationCategory: "LifestyleApplication", operatingSystem: "Any modern web browser", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, description: "A browser-based tool that estimates a face-shape pattern from visible facial landmark proportions." },
   ];
   return (
@@ -46,7 +46,7 @@ export default function Home() {
         <section className="hero">
           <div className="container hero-inner">
             <div className="hero-copy"><p className="eyebrow">No account · No photo upload · Free to use</p><h1>Free Face Shape Detector</h1><p>Upload a clear front-facing photo to estimate your face shape and understand the visible proportions behind the result. Your photo is processed in your browser and is not stored.</p><div className="hero-actions"><Link className="button" href="#detector">Analyze my photo</Link><Link className="text-link" href="/how-to-find-your-face-shape/">Find it manually <span aria-hidden="true">→</span></Link></div><p className="micro-trust"><span aria-hidden="true">✓</span> No registration, beauty score, identity check, or personal profiling.</p></div>
-            <div className="hero-visual" aria-label="Original illustrations of seven common face shapes">{shapes.slice(0, 5).map((shape, index) => <div className={`hero-face face-${index}`} key={shape.slug}><Image src={shape.image} alt={`${shape.name} face outline`} width={118} height={138} priority={index < 3} /></div>)}</div>
+            <div className="hero-visual" aria-label="Original illustrations of seven common face shapes">{shapes.slice(0, 5).map((shape, index) => <div className={`hero-face face-${index}`} key={shape.slug}><Image src={shape.image} alt={`${shape.name} face outline`} width={118} height={138} priority={index === 0} /></div>)}</div>
           </div>
         </section>
 

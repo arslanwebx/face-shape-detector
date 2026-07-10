@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-const linkPattern = /\[([^\]]+)\]\((\/[^\s\)]+)\)/g;
+const linkPattern = /\[([^\]]+)\]\(((?:\/|mailto:)[^\s\)]+)\)/g;
 
 export default function RichText({ text }: { text: string }) {
   const content: ReactNode[] = [];
@@ -10,7 +10,8 @@ export default function RichText({ text }: { text: string }) {
   for (const match of text.matchAll(linkPattern)) {
     const index = match.index ?? 0;
     if (index > cursor) content.push(text.slice(cursor, index));
-    content.push(<Link href={match[2]} key={`${match[2]}-${index}`}>{match[1]}</Link>);
+    const href = match[2];
+    content.push(href.startsWith("mailto:") ? <a href={href} key={`${href}-${index}`}>{match[1]}</a> : <Link href={href} key={`${href}-${index}`}>{match[1]}</Link>);
     cursor = index + match[0].length;
   }
 

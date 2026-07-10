@@ -46,11 +46,11 @@ export default function ContentPageView({ page }: { page: ContentPage }) {
     description: page.description,
     datePublished: page.published,
     mainEntityOfPage: absoluteUrl(page.path),
-    publisher: { "@type": "Organization", name: siteConfig.publisherName, url: siteConfig.siteUrl, logo: { "@type": "ImageObject", url: absoluteUrl(siteConfig.logoPath) } },
+    publisher: { "@type": "Organization", name: siteConfig.publisherName, url: siteConfig.siteUrl, email: siteConfig.contactEmail, contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: siteConfig.contactEmail, url: absoluteUrl("/contact/") }, logo: { "@type": "ImageObject", url: absoluteUrl(siteConfig.logoPath) } },
     image: absoluteUrl(page.image ?? siteConfig.defaultSocialImage),
   };
   if (page.modified !== page.published) pageSchema.dateModified = page.modified;
-  if (page.kind === "article") pageSchema.author = { "@type": "Organization", name: siteConfig.publisherName };
+  if (page.kind === "article") pageSchema.author = { "@type": "Organization", name: siteConfig.editorialName, url: absoluteUrl("/editorial-policy/") };
 
   const jsonLd = [
     pageSchema,
@@ -117,7 +117,6 @@ export default function ContentPageView({ page }: { page: ContentPage }) {
                       {index === 2 && <AdUnit />}
                     </section>
                   ))}
-                  {page.path === "/about/" && <p className="publisher-note"><strong>Current publisher configuration:</strong> {siteConfig.publisherName}. The owner should replace this central value with accurate launch information.</p>}
                   {page.path === "/about/" && <section><h2>Technical references</h2><p>The implementation follows the <a href="https://ai.google.dev/edge/mediapipe/solutions/vision/face_landmarker/web_js" rel="noreferrer">official MediaPipe Face Landmarker guide for web</a> for browser landmark detection. Temporary image previews and local decoding use standard browser file and image APIs described in the <a href="https://developer.mozilla.org/en-US/docs/Web/API/File" rel="noreferrer">MDN File API reference</a>. These sources describe the underlying APIs; the face-shape categories and scoring logic are owned by this project.</p></section>}
                   {page.path === "/contact/" && <ContactForm />}
                   {page.faqs && (

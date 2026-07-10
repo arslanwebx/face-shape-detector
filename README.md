@@ -12,7 +12,7 @@ A production-ready Next.js website that estimates a visitor's closest face-shape
 - Next.js Metadata API, sitemap, robots, manifest, JSON-LD, and static generation
 - Node.js 22.x
 
-No database, user account, paid API, cloud image storage, or required environment variable is used.
+No database, user account, cloud image storage, or client-side secret is used. The contact form uses a server-side Resend request when its two delivery variables are configured.
 
 ## Folder structure
 
@@ -49,21 +49,21 @@ npm run build
 npm start
 ```
 
-## Change the brand, domain, and contact details
+## Production identity
 
 Edit `src/config/site.ts`. The central configuration controls:
 
 - Brand and short brand names
 - Final domain and full site URL
 - Contact email
-- Owner or publisher name
+- Publisher and editorial attribution
 - Logo and default social image paths
 - Website description and social profiles
 - Search Console verification
 - Analytics and AdSense IDs
 - Analytics and advertising enabled states
 
-Before launch, replace the temporary brand/domain/contact/publisher values. Do not enable analytics or advertising until the correct IDs, consent behaviour, and policies are ready.
+The production domain is `https://faceshapedetector.online` and the public contact address is `contact@faceshapedetector.online`. Do not enable analytics or advertising until valid IDs, consent behaviour, and policy disclosures are ready.
 
 To replace the logo, add the new asset under `public/`, keep explicit dimensions, and update `logoPath`. Replace the matching branding in `public/og/` social images as well.
 
@@ -98,7 +98,16 @@ The current implementation downloads MediaPipe runtime and model assets after an
 
 ## Contact form
 
-The default contact form validates fields and opens the visitor's email application with a `mailto:` link. It does not claim that a message was delivered. To connect a provider later, add a server-side route or provider endpoint, keep credentials in server-only environment variables, update the form behaviour and privacy policy, and test both success and failure states. Never expose a secret in `NEXT_PUBLIC_*` code.
+The form posts to `src/app/api/contact/route.ts`, which validates fields again on the server, rejects a hidden honeypot field, limits repeated requests by IP, and delivers accepted messages to `contact@faceshapedetector.online` through Resend. A success message is shown only after Resend accepts the request. A direct `mailto:` fallback remains visible.
+
+Configure these server-side Hostinger environment variables:
+
+```bash
+RESEND_API_KEY=your_resend_api_key
+CONTACT_FROM_EMAIL=Face Shape Detector <contact@faceshapedetector.online>
+```
+
+Verify `faceshapedetector.online` in Resend before using the production sender. Never prefix these secrets with `NEXT_PUBLIC_`.
 
 ## Analytics
 
@@ -145,11 +154,11 @@ Do not claim approval or add a made-up publisher ID.
 8. Use `npm run build`.
 9. Use `npm start`.
 10. Confirm the root directory is `/`.
-11. Deploy to a temporary domain.
+11. Deploy to a Hostinger preview domain.
 12. Test every page and the detector.
 13. Connect the final domain.
 14. Enable HTTPS.
-15. Update the site URL in `src/config/site.ts`.
+15. Confirm `NEXT_PUBLIC_SITE_URL` is `https://faceshapedetector.online` if the environment overrides the built-in production value.
 16. Push the update to GitHub.
 17. Redeploy the application.
 
