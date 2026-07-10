@@ -29,5 +29,5 @@
     "typescript": "5.9.3"
   },
   "type": "module",
-  "displayName": "Face Shape Detector"
+  "displayName": "VisageMetric"
 }

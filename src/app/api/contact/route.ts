@@ -64,7 +64,7 @@ export async function POST(request: Request) {
         from,
         to: [siteConfig.contactEmail],
         reply_to: email,
-        subject: `[Face Shape Detector] ${subject}`,
+        subject: `[VisageMetric] ${subject}`,
         text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
         html: `<p><strong>Name:</strong> ${escapeHtml(name)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><hr><p>${escapeHtml(message).replace(/\n/g, "<br>")}</p>`,
       }),

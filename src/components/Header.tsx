@@ -51,7 +51,7 @@ export default function Header() {
       {open && (
         <div className="mobile-menu-panel">
           <nav id="mobile-menu" className="mobile-nav container" aria-label="Mobile navigation">
-            <div className="mobile-menu-heading"><span>Menu</span><button className="menu-close" type="button" aria-label="Close navigation menu" onClick={() => setOpen(false)}>Close <span aria-hidden="true">×</span></button></div>
+            <div className="mobile-menu-heading"><Logo compact /><button className="menu-close" type="button" aria-label="Close navigation menu" onClick={() => setOpen(false)}>Close <span aria-hidden="true">×</span></button></div>
             {links.map(([label, href]) => (
               <Link className={isActive(href) ? "is-active" : undefined} aria-current={isActive(href) ? "page" : undefined} key={href} href={href} onClick={() => setOpen(false)}>{label}</Link>
             ))}

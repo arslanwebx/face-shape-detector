@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Free Face Shape Detector",
     description: "Estimate your face shape privately in your browser and understand the visible proportions behind the result.",
     url: absoluteUrl("/"),
-    images: [{ url: "/og/default.svg", width: 1200, height: 630, alt: "Face Shape Detector private browser analysis" }],
+    images: [{ url: "/og/default.svg", width: 1200, height: 630, alt: "VisageMetric private browser face analysis" }],
   },
   twitter: { card: "summary_large_image", title: "Free Face Shape Detector", description: "A private, browser-based face-shape estimate with clear explanations.", images: ["/og/default.svg"] },
 };

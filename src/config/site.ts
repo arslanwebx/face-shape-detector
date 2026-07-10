@@ -1,11 +1,11 @@
 export const siteConfig = {
-  brandName: "Face Shape Detector",
-  shortBrandName: "FaceShape",
+  brandName: "VisageMetric",
+  shortBrandName: "VisageMetric",
   finalDomain: "faceshapedetector.online",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://faceshapedetector.online",
   contactEmail: "contact@faceshapedetector.online",
-  publisherName: "Face Shape Detector",
-  editorialName: "Face Shape Detector Editorial Team",
+  publisherName: "VisageMetric",
+  editorialName: "VisageMetric Editorial Team",
   logoPath: "/logo.svg",
   defaultSocialImage: "/og/default.svg",
   description:
