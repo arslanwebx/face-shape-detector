@@ -13,7 +13,20 @@ import BlogArchive from "./BlogArchive";
 
 function Table({ headers, rows }: { headers: string[]; rows: string[][] }) {
   return (
-    <div className="table-wrap"><table><thead><tr>{headers.map((header) => <th key={header} scope="col">{header}</th>)}</tr></thead><tbody>{rows.map((row, index) => <tr key={`${row[0]}-${index}`}>{row.map((cell, cellIndex) => cellIndex === 0 ? <th key={cellIndex} scope="row"><RichText text={cell} /></th> : <td key={cellIndex}><RichText text={cell} /></td>)}</tr>)}</tbody></table></div>
+    <div className="table-wrap">
+      <table>
+        <thead><tr>{headers.map((header) => <th key={header} scope="col">{header}</th>)}</tr></thead>
+        <tbody>
+          {rows.map((row, index) => (
+            <tr key={`${row[0]}-${index}`}>
+              {row.map((cell, cellIndex) => cellIndex === 0
+                ? <th key={cellIndex} scope="row"><RichText text={cell} /></th>
+                : <td key={cellIndex} data-label={headers[cellIndex]}><RichText text={cell} /></td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
