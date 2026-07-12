@@ -28,11 +28,14 @@ export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [statusMessage, setStatusMessage] = useState("");
   const subjectRef = useRef<HTMLInputElement>(null);
+  const submissionControllerRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
     const subject = new URLSearchParams(window.location.search).get("subject");
     if (subject && subjectRef.current && !subjectRef.current.value) subjectRef.current.value = subject.slice(0, 160);
   }, []);
+
+  useEffect(() => () => submissionControllerRef.current?.abort(), []);
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -49,11 +52,16 @@ export default function ContactForm() {
     }
 
     setStatus("submitting");
+    submissionControllerRef.current?.abort();
+    const controller = new AbortController();
+    submissionControllerRef.current = controller;
+    const timeout = window.setTimeout(() => controller.abort(), 12_000);
     try {
       const response = await fetch("/api/contact/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Object.fromEntries(values)),
+        signal: controller.signal,
       });
       const result = (await response.json().catch(() => null)) as { message?: string } | null;
 
@@ -65,7 +73,10 @@ export default function ContactForm() {
       setStatusMessage("Your message was sent successfully. We will reply by email when a response is needed.");
     } catch (error) {
       setStatus("error");
-      setStatusMessage(error instanceof Error ? error.message : "Your message could not be sent. Please use the email link below.");
+      setStatusMessage(error instanceof DOMException && error.name === "AbortError" ? "The request timed out. Please try again or use the email link below." : error instanceof Error ? error.message : "Your message could not be sent. Please use the email link below.");
+    } finally {
+      window.clearTimeout(timeout);
+      if (submissionControllerRef.current === controller) submissionControllerRef.current = null;
     }
   };
 

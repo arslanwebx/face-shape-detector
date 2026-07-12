@@ -164,6 +164,12 @@ Do not claim approval or add a made-up publisher ID.
 16. Push the update to GitHub.
 17. Redeploy the application.
 
+Hostinger should be the only process manager. Do not add PM2, a custom server,
+or a second startup command. The production process is exactly one `npm start`
+instance; Hostinger supplies `PORT` to `next start`. Set
+`NEXT_TELEMETRY_DISABLED=1` in both build and runtime environment variables to
+avoid unnecessary telemetry work.
+
 ## Future update workflow
 
 1. Make a focused content or code change.

@@ -17,15 +17,18 @@ const acceptedTypes = ["image/jpeg", "image/png", "image/webp"];
 
 async function imageToCanvas(file: File) {
   const bitmap = await createImageBitmap(file);
-  const scale = Math.min(1, QUALITY_THRESHOLDS.maxAnalysisSide / Math.max(bitmap.width, bitmap.height));
-  const canvas = document.createElement("canvas");
-  canvas.width = Math.round(bitmap.width * scale);
-  canvas.height = Math.round(bitmap.height * scale);
-  const context = canvas.getContext("2d", { willReadFrequently: true });
-  if (!context) throw new Error("Your browser could not prepare this image.");
-  context.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
-  bitmap.close();
-  return { canvas, context };
+  try {
+    const scale = Math.min(1, QUALITY_THRESHOLDS.maxAnalysisSide / Math.max(bitmap.width, bitmap.height));
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.round(bitmap.width * scale);
+    canvas.height = Math.round(bitmap.height * scale);
+    const context = canvas.getContext("2d", { willReadFrequently: true });
+    if (!context) throw new Error("Your browser could not prepare this image.");
+    context.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+    return { canvas, context };
+  } finally {
+    bitmap.close();
+  }
 }
 
 function pixelQuality(context: CanvasRenderingContext2D, width: number, height: number) {
@@ -141,9 +144,13 @@ export default function Detector() {
           baseOptions: { modelAssetPath: options.baseOptions.modelAssetPath, delegate: "CPU" },
         });
       }
-      setStatus("Checking face position and visible proportions.");
-      const detection = landmarker.detect(canvas);
-      landmarker.close();
+      let detection;
+      try {
+        setStatus("Checking face position and visible proportions.");
+        detection = landmarker.detect(canvas);
+      } finally {
+        landmarker.close();
+      }
       if (detection.faceLandmarks.length === 0) throw new Error("No face was detected. Use a clear, front-facing photo with your full face visible.");
       if (detection.faceLandmarks.length > 1) throw new Error("Only one person should appear in the photo.");
       const landmarks = detection.faceLandmarks[0];
