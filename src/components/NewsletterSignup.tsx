@@ -27,13 +27,13 @@ export default function NewsletterSignup() {
 
   return (
     <div className="footer-newsletter">
-      <h3>Face-shape notes</h3>
-      <p>Request occasional guides, comparison tips, and detector updates.</p>
+      <h3>Subscribe for face-shape tips</h3>
+      <p>Get occasional guides, practical comparison tips, and detector updates.</p>
       <form onSubmit={submit} noValidate>
         <label className="sr-only" htmlFor="newsletter-email">Email address</label>
         <div className="newsletter-fields">
           <input id="newsletter-email" name="newsletterEmail" type="email" autoComplete="email" placeholder="Email address" required aria-describedby={message ? "newsletter-message" : undefined} />
-          <button type="submit">Join</button>
+          <button type="submit">Subscribe</button>
         </div>
         {message && <p id="newsletter-message" className={isError ? "newsletter-message is-error" : "newsletter-message"} role={isError ? "alert" : "status"}>{message}</p>}
       </form>
