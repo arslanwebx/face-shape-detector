@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { pages } from "@/content/pages";
 import { absoluteUrl } from "@/config/site";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: absoluteUrl("/"), lastModified: new Date("2026-07-10"), changeFrequency: "monthly", priority: 1 },

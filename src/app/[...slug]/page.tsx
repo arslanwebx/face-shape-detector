@@ -6,6 +6,8 @@ import { absoluteUrl, siteConfig } from "@/config/site";
 
 type Props = { params: Promise<{ slug: string[] }> };
 
+export const dynamicParams = false;
+
 function pathFromSlug(slug: string[]) { return `/${slug.join("/")}/`; }
 
 export function generateStaticParams() {

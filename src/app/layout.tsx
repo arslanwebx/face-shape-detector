@@ -1,18 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { absoluteUrl, siteConfig } from "@/config/site";
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-  variable: "--font-poppins",
-  fallback: ["system-ui", "Arial", "sans-serif"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
@@ -27,12 +18,11 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#fbf9ff" };
-export const revalidate = 3600;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={poppins.variable}>
+      <body>
         <a className="skip-link" href="#main-content">Skip to main content</a>
         <Header />
         {children}

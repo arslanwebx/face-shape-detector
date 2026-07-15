@@ -12,7 +12,9 @@ A production-ready Next.js website that estimates a visitor's closest face-shape
 - `@mediapipe/tasks-vision` loaded only after the visitor starts analysis
 - Browser Canvas APIs for resizing, quality checks, and privacy-safe result cards
 - Next.js Metadata API, sitemap, robots, manifest, JSON-LD, and static generation
-- Node.js 22.x
+- Static Next.js export deployed to Cloudflare Pages
+- Cloudflare Pages Function for contact delivery through Resend
+- Node.js 22.x for local and Cloudflare build steps
 
 No database, user account, cloud image storage, or client-side secret is used. The contact form uses a server-side Resend request when its two delivery variables are configured.
 
@@ -29,6 +31,11 @@ public/
   faces/               Seven original SVG face-shape illustrations
   images/blog/         Ten optimized 1200 × 675 article images
   og/                  Branded social images
+  _headers             Cloudflare cache and security headers
+  _redirects           Cloudflare legacy URL redirects
+  _routes.json         Limits Functions invocations to the contact endpoint
+functions/
+  api/contact.ts       Cloudflare Pages contact endpoint
 ```
 
 ## Local installation
@@ -42,14 +49,17 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-Production checks and server:
+Production checks and Cloudflare export:
 
 ```bash
 npm run lint
 npm run typecheck
 npm run build
-npm start
 ```
+
+The production-ready static files are generated in `out/`. The contact Pages
+Function is compiled and deployed by Cloudflare from the root `functions/`
+directory; it is intentionally not included in `out/`.
 
 ## Production identity
 
@@ -100,13 +110,21 @@ The current implementation downloads MediaPipe runtime and model assets after an
 
 ## Contact form
 
-The form posts to `src/app/api/contact/route.ts`, which validates fields again on the server, rejects a hidden honeypot field, limits repeated requests by IP, and delivers accepted messages to `contact@faceshapedetector.online` through Resend. A success message is shown only after Resend accepts the request. A direct `mailto:` fallback remains visible.
+The form posts to `/api/contact/`, which is handled by
+`functions/api/contact.ts` as a Cloudflare Pages Function. It validates fields
+again at the edge, rejects a hidden honeypot field, bounds request size and
+execution time, limits repeated requests per Function isolate, and delivers
+accepted messages through Resend. A success message is shown only after Resend
+accepts the request. A direct `mailto:` fallback remains visible.
 
-Configure these server-side Hostinger environment variables:
+Configure these values under **Workers & Pages -> your project -> Settings ->
+Variables and Secrets** for both Production and Preview. Store
+`RESEND_API_KEY` as an encrypted secret:
 
 ```bash
 RESEND_API_KEY=your_resend_api_key
 CONTACT_FROM_EMAIL=Face Shape Detector <contact@faceshapedetector.online>
+CONTACT_TO_EMAIL=contact@faceshapedetector.online
 ```
 
 Verify `faceshapedetector.online` in Resend before using the production sender. Never prefix these secrets with `NEXT_PUBLIC_`.
@@ -144,31 +162,26 @@ Do not claim approval or add a made-up publisher ID.
 6. Do not upload `node_modules`, `.next`, or `.env`.
 7. Commit the files to the `main` branch.
 
-## Hostinger deployment
+## Cloudflare Pages deployment
 
-1. Open the GitHub import screen in Hostinger.
-2. Refresh the repository list.
-3. Select the face-shape-detector repository.
-4. Click Deploy.
-5. Select the `main` branch.
-6. Select Node.js `22.x`.
-7. Use `npm install`.
-8. Use `npm run build`.
-9. Use `npm start`.
-10. Confirm the root directory is `/`.
-11. Deploy to a Hostinger preview domain.
-12. Test every page and the detector.
-13. Connect the final domain.
-14. Enable HTTPS.
-15. Confirm `NEXT_PUBLIC_SITE_URL` is `https://faceshapedetector.online` if the environment overrides the built-in production value.
-16. Push the update to GitHub.
-17. Redeploy the application.
+1. Push the repository to GitHub and open **Workers & Pages** in Cloudflare.
+2. Create a Pages application and connect this repository's `main` branch.
+3. Select the **Next.js (Static HTML Export)** framework preset.
+4. Set the build command to `npm run build`.
+5. Set the build output directory to `out` and the root directory to `/`.
+6. Set `NODE_VERSION=22` and `NEXT_TELEMETRY_DISABLED=1` as build variables.
+7. Add `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, and `CONTACT_TO_EMAIL` under
+   Variables and Secrets for both Production and Preview.
+8. Deploy and test the home page, several article URLs, the detector, and the
+   contact form on the generated `pages.dev` preview URL.
+9. Add `faceshapedetector.online` under **Custom domains**. If the domain's DNS
+   already uses Cloudflare, Pages will configure the required record.
+10. Remove the Hostinger deployment only after the custom domain works on Pages.
 
-Hostinger should be the only process manager. Do not add PM2, a custom server,
-or a second startup command. The production process is exactly one `npm start`
-instance; Hostinger supplies `PORT` to `next start`. Set
-`NEXT_TELEMETRY_DISABLED=1` in both build and runtime environment variables to
-avoid unnecessary telemetry work.
+No start command, Node.js web server, PM2 process, or Hostinger runtime is used
+in production. Pages serves `out/` from Cloudflare's network and invokes the
+Function only for `/api/contact` because `public/_routes.json` excludes the
+static site from Function invocations.
 
 ## Future update workflow
 
@@ -178,7 +191,8 @@ avoid unnecessary telemetry work.
 4. Test the detector with permitted test images at desktop and mobile sizes.
 5. Check the privacy promise in browser network tools after any detector change.
 6. Commit and push to `main`.
-7. Confirm the Hostinger deployment and sample canonical URLs.
+7. Confirm the Cloudflare Pages deployment, the contact Function, and sample
+   canonical URLs.
 
 ## Launch review
 
