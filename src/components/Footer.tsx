@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import Logo from "./Logo";
+import NewsletterSignup from "./NewsletterSignup";
 
 const contentLinks = [
   ["Face Shapes", "/face-shapes/"],
@@ -8,6 +9,7 @@ const contentLinks = [
   ["Hairstyles", "/hairstyles-by-face-shape/"],
   ["Glasses", "/glasses-by-face-shape/"],
   ["Blog", "/blog/"],
+  ["Sitemap", "/sitemap.xml"],
 ] as const;
 
 const trustLinks = [
@@ -24,9 +26,9 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="container footer-grid">
-        <div><Logo inverse /><p>{siteConfig.description}</p><a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a></div>
-        <div><h3>Explore</h3>{contentLinks.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</div>
-        <div><h3>Trust and policies</h3>{trustLinks.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</div>
+        <div className="footer-column footer-intro"><Logo inverse /><p>{siteConfig.description}</p><a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a><NewsletterSignup /></div>
+        <div className="footer-column"><h3>Explore</h3>{contentLinks.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</div>
+        <div className="footer-column"><h3>Trust and policies</h3>{trustLinks.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</div>
       </div>
       <div className="container footer-bottom"><span>© {new Date().getFullYear()} {siteConfig.brandName}. All rights reserved.</span><span>Private by design. No account required.</span></div>
     </footer>
