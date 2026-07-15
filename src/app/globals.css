@@ -71,7 +71,7 @@ main ul:not([class]) li::marker, main ol:not([class]) li::marker { color: var(--
 .text-link { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
 .text-link:hover { text-decoration: underline; }
 .button-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
-.eyebrow { margin: 0 0 10px; color: var(--accent-dark); font-size: 12px; line-height: 1.2; text-transform: uppercase; letter-spacing: .14em; font-weight: 700; }
+.eyebrow { display: none; }
 
 .hero { overflow: hidden; background: linear-gradient(135deg, #fbf9ff 0%, #fffefd 55%, #fdf5f7 100%); border-bottom: 1px solid var(--line); }
 .hero-inner { min-height: 540px; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 56px; padding-block: 62px 92px; }

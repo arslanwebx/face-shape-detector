@@ -220,7 +220,6 @@ export default function Detector() {
     <section id="detector" className="tool-shell" aria-labelledby="detector-title">
       <div className="tool-heading">
         <div>
-          <p className="eyebrow">Private browser analysis</p>
           <h2 id="detector-title">Analyze a front-facing photo</h2>
         </div>
         <span className="privacy-chip">Photo not stored</span>
@@ -281,7 +280,7 @@ export default function Detector() {
       <div className="result-space" aria-live="polite">
         {result && primary && (
           <div className="result-card">
-            <div className="result-topline"><p className="eyebrow">Your estimate</p><span>Scores total 100%</span></div>
+            <div className="result-topline"><span>Scores total 100%</span></div>
             <h3>Your estimated face shape is {primary.shape.toLowerCase()}.</h3>
             <p>These are similarity scores for the visible proportions in this photo, not scientific accuracy or diagnostic confidence.</p>
             <div className="score-list">

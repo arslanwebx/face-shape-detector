@@ -93,7 +93,6 @@ export default function ContentPageView({ page }: { page: ContentPage }) {
           <Breadcrumbs items={crumbs} />
           <header className={`article-hero${page.kind === "article" ? " article-hero-blog" : ""}`}>
             <div className="article-hero-copy">
-              <p className="eyebrow">{page.topic ?? page.eyebrow}</p>
               <h1>{page.title}</h1>
               <p className="lead">{page.intro}</p>
               {(page.kind === "article" || page.kind === "guide" || page.kind === "shape") && <ArticleMeta page={page} />}
@@ -147,14 +146,14 @@ export default function ContentPageView({ page }: { page: ContentPage }) {
                   )}
                 </article>
                 <aside className="article-aside">
-                  <div className="aside-card"><p className="eyebrow">Keep exploring</p><h2>Related guides</h2>{page.related.slice(0, 4).map((item) => <Link href={item.href} key={item.href + item.label}><strong>{item.label}</strong><span>{item.description}</span></Link>)}</div>
+                  <div className="aside-card"><h2>Related guides</h2>{page.related.slice(0, 4).map((item) => <Link href={item.href} key={item.href + item.label}><strong>{item.label}</strong><span>{item.description}</span></Link>)}</div>
                   <div className="aside-card soft"><h2>Private estimate</h2><p>Use a clear front-facing photo. It stays in your browser and is not stored.</p><Link className="button" href="/#detector">Analyze my photo</Link></div>
                   {page.kind === "shape" && <div className="aside-card"><h2>Core references</h2><Link href="/face-shapes/"><strong>All seven face shapes</strong><span>Compare the full set side by side.</span></Link><Link href="/how-to-find-your-face-shape/"><strong>Manual measurement guide</strong><span>Check visible length, width, jaw, and chin.</span></Link><Link href="/hairstyles-by-face-shape/"><strong>Hairstyle principles</strong><span>Adapt volume, length, part, and texture.</span></Link><Link href="/glasses-by-face-shape/"><strong>Glasses and frame fit</strong><span>Combine shape guidance with proper fitting.</span></Link></div>}
                 </aside>
               </div>
               {page.kind === "article" && (
                 <section className="related-reading" aria-labelledby="related-reading-heading">
-                  <div className="section-heading split"><div><p className="eyebrow">Continue learning</p><h2 id="related-reading-heading">Related articles and guides</h2></div><Link className="text-link" href="/blog/">View all articles <span aria-hidden="true">→</span></Link></div>
+                  <div className="section-heading split"><div><h2 id="related-reading-heading">Related articles and guides</h2></div><Link className="text-link" href="/blog/">View all articles <span aria-hidden="true">→</span></Link></div>
                   <div className="related-reading-grid">{page.related.map((item) => <article key={item.href + item.label}><h3><Link href={item.href}>{item.label}</Link></h3><p>{item.description}</p><Link href={item.href}>Explore <span aria-hidden="true">→</span></Link></article>)}</div>
                 </section>
               )}
