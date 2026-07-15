@@ -12,11 +12,11 @@ A production-ready Next.js website that estimates a visitor's closest face-shape
 - `@mediapipe/tasks-vision` loaded only after the visitor starts analysis
 - Browser Canvas APIs for resizing, quality checks, and privacy-safe result cards
 - Next.js Metadata API, sitemap, robots, manifest, JSON-LD, and static generation
-- Static Next.js export deployed to Cloudflare Pages
-- Cloudflare Pages Function for contact delivery through Resend
+- Static Next.js export deployed with Cloudflare Workers Static Assets
+- Self-hosted Poppins font files bundled during the build
 - Node.js 22.x for local and Cloudflare build steps
 
-No database, user account, cloud image storage, or client-side secret is used. The contact form uses a server-side Resend request when its two delivery variables are configured.
+No database, user account, cloud image storage, server-side form endpoint, or client-side secret is used. The contact form prepares a `mailto:` message for the visitor to review and send in their email application.
 
 ## Folder structure
 
@@ -33,9 +33,7 @@ public/
   og/                  Branded social images
   _headers             Cloudflare cache and security headers
   _redirects           Cloudflare legacy URL redirects
-  _routes.json         Limits Functions invocations to the contact endpoint
-functions/
-  api/contact.ts       Cloudflare Pages contact endpoint
+wrangler.jsonc         Deploys out/ as Cloudflare Workers Static Assets
 ```
 
 ## Local installation
@@ -55,11 +53,12 @@ Production checks and Cloudflare export:
 npm run lint
 npm run typecheck
 npm run build
+npm run deploy -- --dry-run
 ```
 
-The production-ready static files are generated in `out/`. The contact Pages
-Function is compiled and deployed by Cloudflare from the root `functions/`
-directory; it is intentionally not included in `out/`.
+The production-ready static files are generated in `out/`. Wrangler reads the
+repository's `wrangler.jsonc` and uploads that directory as Workers Static
+Assets; it does not inspect or deploy the `.next/` directory.
 
 ## Production identity
 
@@ -110,24 +109,12 @@ The current implementation downloads MediaPipe runtime and model assets after an
 
 ## Contact form
 
-The form posts to `/api/contact/`, which is handled by
-`functions/api/contact.ts` as a Cloudflare Pages Function. It validates fields
-again at the edge, rejects a hidden honeypot field, bounds request size and
-execution time, limits repeated requests per Function isolate, and delivers
-accepted messages through Resend. A success message is shown only after Resend
-accepts the request. A direct `mailto:` fallback remains visible.
-
-Configure these values under **Workers & Pages -> your project -> Settings ->
-Variables and Secrets** for both Production and Preview. Store
-`RESEND_API_KEY` as an encrypted secret:
-
-```bash
-RESEND_API_KEY=your_resend_api_key
-CONTACT_FROM_EMAIL=Face Shape Detector <contact@faceshapedetector.online>
-CONTACT_TO_EMAIL=contact@faceshapedetector.online
-```
-
-Verify `faceshapedetector.online` in Resend before using the production sender. Never prefix these secrets with `NEXT_PUBLIC_`.
+The static contact form validates its fields in the browser and opens a
+pre-addressed `mailto:` draft to `contact@faceshapedetector.online`. It clearly
+states that nothing has been sent until the visitor reviews the draft and
+presses Send in their email application. The address remains visible as a
+direct link. There is no Next.js API route, Worker form handler, external form
+provider, secret, or fake delivery confirmation.
 
 ## Analytics
 
@@ -162,26 +149,29 @@ Do not claim approval or add a made-up publisher ID.
 6. Do not upload `node_modules`, `.next`, or `.env`.
 7. Commit the files to the `main` branch.
 
-## Cloudflare Pages deployment
+## Cloudflare Workers Static Assets deployment
 
-1. Push the repository to GitHub and open **Workers & Pages** in Cloudflare.
-2. Create a Pages application and connect this repository's `main` branch.
-3. Select the **Next.js (Static HTML Export)** framework preset.
-4. Set the build command to `npm run build`.
-5. Set the build output directory to `out` and the root directory to `/`.
-6. Set `NODE_VERSION=22` and `NEXT_TELEMETRY_DISABLED=1` as build variables.
-7. Add `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, and `CONTACT_TO_EMAIL` under
-   Variables and Secrets for both Production and Preview.
-8. Deploy and test the home page, several article URLs, the detector, and the
-   contact form on the generated `pages.dev` preview URL.
-9. Add `faceshapedetector.online` under **Custom domains**. If the domain's DNS
-   already uses Cloudflare, Pages will configure the required record.
-10. Remove the Hostinger deployment only after the custom domain works on Pages.
+Use these exact Cloudflare dashboard settings:
 
-No start command, Node.js web server, PM2 process, or Hostinger runtime is used
-in production. Pages serves `out/` from Cloudflare's network and invokes the
-Function only for `/api/contact` because `public/_routes.json` excludes the
-static site from Function invocations.
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy`
+- Root directory: `/`
+- Node version: `22.x`
+
+`npm run build` creates the complete static website in `out/`.
+`wrangler.jsonc` explicitly deploys `./out` as Workers Static Assets using
+automatic trailing-slash HTML handling and the exported 404 page. Because the
+configuration file exists and points to the static assets, Wrangler does not
+auto-detect Next.js or look for `.next/standalone`.
+
+Do not use OpenNext for this project. Do not set the Cloudflare output directory
+to `.next`, do not add `@opennextjs/cloudflare`, and do not run
+`opennextjs-cloudflare deploy`. The `npx wrangler deploy` command reads
+`wrangler.jsonc`; `npm run build` never runs Wrangler.
+
+After deployment, connect `faceshapedetector.online` as the Worker's custom
+domain. Keep the previous Hostinger deployment available until the custom
+domain and sample routes work from Cloudflare.
 
 ## Future update workflow
 
@@ -191,8 +181,8 @@ static site from Function invocations.
 4. Test the detector with permitted test images at desktop and mobile sizes.
 5. Check the privacy promise in browser network tools after any detector change.
 6. Commit and push to `main`.
-7. Confirm the Cloudflare Pages deployment, the contact Function, and sample
-   canonical URLs.
+7. Confirm the Cloudflare Workers Static Assets deployment and sample canonical
+   URLs.
 
 ## Launch review
 

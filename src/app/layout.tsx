@@ -1,4 +1,8 @@
 import type { Metadata, Viewport } from "next";
+import "@fontsource/poppins/latin-400.css";
+import "@fontsource/poppins/latin-500.css";
+import "@fontsource/poppins/latin-600.css";
+import "@fontsource/poppins/latin-700.css";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";

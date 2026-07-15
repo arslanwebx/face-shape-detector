@@ -21,3 +21,9 @@
 
 /logo.svg
   Cache-Control: public, max-age=604800, stale-while-revalidate=2592000
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/robots.txt
+  Cache-Control: public, max-age=3600, must-revalidate

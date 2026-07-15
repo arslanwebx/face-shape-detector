@@ -15,7 +15,7 @@
   --page-gutter: clamp(20px, 4vw, 32px);
   --section-space: clamp(64px, 7.5vw, 92px);
   --content-space: clamp(20px, 3vw, 32px);
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
 
 * { box-sizing: border-box; }
