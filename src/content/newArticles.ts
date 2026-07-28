@@ -627,6 +627,9 @@ export const newArticles: ContentPage[] = [
     kind: "article",
     published: "2026-07-28",
     modified: "2026-07-28",
+    image: "/images/blog/oval-face-vs-square-face.webp",
+    imageAlt: "Oval and square face outlines shown side by side with a dashed oval and square guide",
+    imageCaption: "Oval faces usually taper more softly through the jaw, while square faces carry more visible width and structure through the lower outline.",
     sections: [
       {
         heading: "Oval face vs square face at a glance",
