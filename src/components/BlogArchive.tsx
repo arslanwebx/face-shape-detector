@@ -2,7 +2,9 @@ import { blogArticles } from "@/content/pages";
 import ArticleCard from "./ArticleCard";
 
 export default function BlogArchive() {
-  const articles = [...blogArticles].sort((first, second) => second.published.localeCompare(first.published));
+  const articles = [...blogArticles].sort((first, second) =>
+    second.published.localeCompare(first.published) || blogArticles.indexOf(second) - blogArticles.indexOf(first),
+  );
 
   return (
     <section className="blog-library" aria-labelledby="all-articles-heading">

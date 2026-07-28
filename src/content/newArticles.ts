@@ -725,4 +725,111 @@ export const newArticles: ContentPage[] = [
       detectorLink,
     ],
   },
+  {
+    path: "/blog/oval-face-vs-heart-face/",
+    title: "Oval Face vs Heart Face: What Sets Them Apart",
+    seoTitle: "Oval Face vs Heart Face: The Real Difference (Not Just the Chin)",
+    description: "Compare oval and heart face shapes through forehead, cheekbone, jaw, and chin proportions, then explore flexible hair and glasses ideas for each.",
+    eyebrow: "Face-shape comparison",
+    topic: "Face-shape comparisons",
+    intro: "Oval and heart face shapes can look similar when both have a tapered lower face. The key difference is where the visible width sits: an oval outline changes gradually from upper face to jaw, while a heart outline is more noticeably broad across the upper face and narrows toward the chin. Compare the full outline, not the chin alone.",
+    kind: "article",
+    published: "2026-07-28",
+    modified: "2026-07-28",
+    image: "/images/blog/oval-face-vs-heart-face.webp",
+    imageAlt: "Oval and heart face outlines shown side by side with dashed guide lines",
+    imageCaption: "Oval faces tend to taper gradually, while heart faces show a clearer upper-face-to-jaw taper.",
+    sections: [
+      {
+        heading: "Start with the upper face, not the chin",
+        paragraphs: [
+          "Compare the visible width around the temples and forehead with the width through the jaw in a straight, neutral, eye-level photo. An oval outline normally changes gradually, with the jaw narrower than the upper face but without a dramatic contrast. A heart outline shows a clearer difference: the upper face is visibly broader while the jaw narrows more strongly toward the chin.",
+          "The chin is a useful second check. Oval faces often finish with a rounded or softly tapered chin. Heart faces often have a narrower or more pointed chin, but that feature alone is not decisive. Facial anthropometry uses several horizontal and vertical landmarks because one measurement cannot describe every individual's face. [Published research indexed by the National Library of Medicine](https://pmc.ncbi.nlm.nih.gov/articles/PMC8783922/) also shows how facial dimensions vary among people.",
+        ],
+      },
+      {
+        heading: "Oval and heart faces at a glance",
+        table: {
+          headers: ["Feature", "Oval face", "Heart face"],
+          rows: [
+            ["Upper face and jaw", "A gradual taper from upper face to jaw", "Upper face noticeably broader than the jaw"],
+            ["Widest visible area", "Often around the cheekbones or upper cheeks", "Upper face, temples, or forehead"],
+            ["Chin", "Rounded or gently tapered", "Narrow and often more pointed"],
+            ["Taper", "Balanced and gradual", "More pronounced from top to bottom"],
+            ["Hairline", "Can be rounded, straight, or varied", "May have a widow's peak, but one is not required"],
+          ],
+        },
+      },
+      {
+        heading: "Oval face explained",
+        paragraphs: [
+          "An oval face is a longer-than-wide pattern with a smooth lower outline. The forehead may be a little wider than the jaw, cheekbones can sit near the widest visible span, and the changes between these areas are usually gentle rather than abrupt.",
+          "No single feature should dominate the decision. Use the [oval face guide](/face-shapes/oval/) to compare length, cheek width, jawline, and chin together. If the upper face is only slightly wider than the jaw and the chin is soft, oval may be the more useful starting point.",
+        ],
+      },
+      {
+        heading: "Heart face explained",
+        paragraphs: [
+          "A heart face has stronger upper-to-lower contrast. The visible upper face leads the outline, then the sides taper toward a narrower jaw and chin. A widow's peak can reinforce the visual impression, but a person can have a heart-shaped outline with a straight or rounded hairline.",
+          "The [heart face guide](/face-shapes/heart/) explains how upper-face width, taper, and chin shape fit together. If cheekbones are instead the clearest widest point and both the upper face and jaw are narrower, compare diamond before deciding on heart.",
+        ],
+      },
+      {
+        heading: "The oval-heart gray zone",
+        paragraphs: [
+          "Some faces have a slightly wider upper face and a narrower chin without the strong contrast of a typical heart outline. That is not a measurement failure. A description such as oval with heart characteristics, or soft heart, may better reflect what you see.",
+          "For a mixed result, choose styling by the particular feature you want to work with. Use oval guidance when the overall line is balanced; borrow heart ideas when you want to change how much emphasis sits at the temples or jaw.",
+        ],
+      },
+      {
+        heading: "Hairstyles: choose the visual effect you want",
+        subsections: [
+          {
+            heading: "For oval proportions",
+            paragraphs: ["Oval proportions can carry a wide range of cuts, from blunt bobs to long layers and fringe. Rather than looking for an approved list, decide whether you want more height, more side width, a shorter visible face, or a sharper outline. Then adapt the choice to texture, density, growth direction, maintenance, and preference."],
+          },
+          {
+            heading: "For heart proportions",
+            paragraphs: ["Movement or volume near the jaw can add visual presence to the lower face, while a side-swept fringe can interrupt a broad upper area. A centre part exposes symmetry and the upper face more fully. These are styling options, not corrections: choose the effect that fits your hair and the look you enjoy."],
+          },
+        ],
+      },
+      {
+        heading: "Glasses and brows: fit comes first",
+        paragraphs: [
+          "Oval proportions can work with many frame geometries when the bridge, lens position, temple length, and total width fit well. Heart proportions may look for frames that add visual weight lower down, but a frame still has to fit comfortably and support the prescription.",
+          "Face shape is not an eyewear prescription. The [National Eye Institute explains that an optician helps select frames after an eye-care prescription](https://www.nei.nih.gov/eye-health-information/eye-conditions-and-diseases/refractive-errors/eyeglasses-refractive-errors). Explore the [glasses-by-face-shape guide](/glasses-by-face-shape/) for practical width, lens, and comfort checks.",
+        ],
+      },
+      {
+        heading: "Three common comparison mistakes",
+        bullets: [
+          "Using a smiling, angled, or close selfie, which can change the apparent cheek and jaw width.",
+          "Treating a widow's peak as a requirement instead of comparing upper-face and jaw width.",
+          "Calling a face heart because the chin is narrow without checking the complete upper-to-lower taper.",
+          "Mixing heart and diamond: diamond faces peak at the cheekbones, while heart faces are broadest higher on the face. See [heart face vs diamond face](/blog/heart-vs-diamond-face/) for that comparison.",
+        ],
+      },
+      {
+        heading: "The practical answer",
+        paragraphs: [
+          "Choose oval when the outline is longer than wide with a gentle taper and a rounded or softly narrowing lower face. Choose heart when the visible upper face is distinctly broader than the jaw and the outline narrows more strongly toward the chin.",
+          "When the distinction is close, keep both descriptions in mind and use the feature that matters to your styling choice. You can also [analyze a clear front-facing photo](/#detector) privately in your browser, then compare its explanation with the [manual face-shape guide](/how-to-find-your-face-shape/).",
+        ],
+      },
+    ],
+    faqs: [
+      { question: "How do I know if I am oval or heart-shaped at a glance?", answer: "Compare upper-face width with jaw width first. A gentle change between them points toward oval; a clearer upper-face-to-jaw contrast points toward heart. Use chin shape only as supporting evidence." },
+      { question: "Is a widow's peak required for a heart face?", answer: "No. A widow's peak can add to a heart-like impression, but the useful pattern is a visibly broader upper face and a jaw that tapers toward the chin." },
+      { question: "Are oval faces easier to style than heart faces?", answer: "Neither shape needs to be corrected. Oval proportions can accommodate many visual effects, while heart proportions can use volume, fringe, and frame choices to emphasize or soften features according to personal preference." },
+      { question: "Can a heart face shift toward oval over time?", answer: "Changes in facial fullness, hair, facial hair, and photography can soften how the outline appears. Underlying structure remains important, so use the labels as flexible descriptions rather than fixed categories." },
+    ],
+    related: [
+      { href: "/face-shapes/oval/", label: "Oval face guide", description: "Review the balanced, gradual-taper pattern." },
+      { href: "/face-shapes/heart/", label: "Heart face guide", description: "Study upper-face width and narrowing toward the chin." },
+      { href: "/blog/heart-vs-diamond-face/", label: "Heart vs diamond face", description: "Check whether width peaks high on the face or at the cheeks." },
+      { href: "/how-to-find-your-face-shape/", label: "How to find your face shape", description: "Use a controlled photo and manual comparison method." },
+      detectorLink,
+    ],
+  },
 ];
