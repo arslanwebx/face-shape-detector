@@ -62,8 +62,8 @@ export default function ContentPageView({ page }: { page: ContentPage }) {
     datePublished: page.published,
     mainEntityOfPage: absoluteUrl(page.path),
     publisher: { "@type": "Organization", name: siteConfig.publisherName, url: siteConfig.siteUrl, email: siteConfig.contactEmail, contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: siteConfig.contactEmail, url: absoluteUrl("/contact/") }, logo: { "@type": "ImageObject", url: absoluteUrl(siteConfig.logoPath) } },
-    image: absoluteUrl(page.image ?? siteConfig.defaultSocialImage),
   };
+  if (page.image) pageSchema.image = absoluteUrl(page.image);
   if (isAuthorPage) pageSchema.mainEntity = { "@type": "Person", name: siteConfig.authorName, url: absoluteUrl(siteConfig.authorPath), jobTitle: "Publisher and editor", worksFor: { "@type": "Organization", name: siteConfig.publisherName, url: siteConfig.siteUrl } };
   if (page.modified !== page.published) pageSchema.dateModified = page.modified;
   if (page.kind === "article") pageSchema.author = { "@type": "Person", name: siteConfig.authorName, url: absoluteUrl(siteConfig.authorPath) };

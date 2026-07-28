@@ -616,4 +616,110 @@ export const newArticles: ContentPage[] = [
       detectorLink,
     ],
   },
+  {
+    path: "/blog/oval-face-vs-square-face/",
+    title: "Oval Face vs Square Face: Key Differences and How to Tell Them Apart",
+    seoTitle: "Oval Face vs Square Face: How to Tell the Difference (2026 Guide)",
+    description: "Learn how oval and square face shapes differ in length, width, forehead, jawline, chin, styling options, and a practical identification check.",
+    eyebrow: "Face-shape comparison",
+    topic: "Face-shape comparisons",
+    intro: "An oval face is usually longer than it is wide, with a softly tapered jaw. A square face tends to carry similar width through the forehead and jaw, with more visible lower-face corners. The clearest contrast is the whole lower outline: soft and tapered suggests oval, while broad and angular suggests square.",
+    kind: "article",
+    published: "2026-07-28",
+    modified: "2026-07-28",
+    sections: [
+      {
+        heading: "Oval face vs square face at a glance",
+        table: {
+          headers: ["Feature", "Oval face", "Square face"],
+          rows: [
+            ["Length and width", "Face length is more prominent than width", "Length and width often look relatively close"],
+            ["Jawline", "Softly curved and narrower than the upper face", "Broad with a clearer change of direction at the corners"],
+            ["Forehead", "Usually gently rounded and a little wider than the jaw", "Often looks straighter and similar in width to the jaw"],
+            ["Cheekbones", "May sit near the widest visible span", "Can be broad, but the forehead and jaw retain visible width"],
+            ["Chin", "Gently rounded or lightly tapered", "Broader, flatter, or softly squared"],
+            ["Overall outline", "Balanced and elongated", "Evenly wide and more geometric"],
+          ],
+        },
+      },
+      {
+        heading: "Measure the overall proportions first",
+        paragraphs: [
+          "Use a mirror and one straight, eye-level photo with hair moved away from the temples and jaw. Compare face length, forehead width, cheekbone width, and the visible width across the jaw. Facial anthropometry uses vertical and horizontal landmarks for these kinds of comparisons, but population averages should not be used to force a personal label. [Research indexed by the National Library of Medicine](https://pmc.ncbi.nlm.nih.gov/articles/PMC8783922/) also shows that visible facial dimensions vary across people and with factors such as age and body composition.",
+          "An oval outline is more likely when visible length clearly exceeds the broadest width and the jaw narrows below the cheeks. A square outline is more likely when the upper face and jaw carry similar width and the lower corners remain noticeable. For a full method, use the [How to Find Your Face Shape guide](/how-to-find-your-face-shape/) rather than relying on one number.",
+        ],
+      },
+      {
+        heading: "Oval face defining traits",
+        paragraphs: [
+          "Oval proportions are typically longer than wide, with a gradual transition from cheekbones to jaw and chin. The upper face may be a little wider than the jaw, but no single measurement defines the category. Look for a smooth, balanced taper instead of an exact ratio.",
+          "The [oval face guide](/face-shapes/oval/) explains how length, cheekbones, jawline, and chin work together. If your jaw corners are visible but your face is distinctly longer than wide, keep oval and soft-square as possible descriptions rather than forcing a perfect match.",
+        ],
+      },
+      {
+        heading: "Square face defining traits",
+        paragraphs: [
+          "Square faces are identified by the relationship among a broad forehead, cheek area, and jaw, not by a defined jaw alone. The lower outline often stays wide toward the chin and changes direction more clearly near the jaw corners.",
+          "A straight hairline or a flatter chin can support the impression, but neither is required. Check the [square face guide](/face-shapes/square/) for the full pattern and compare the complete outline in even light.",
+        ],
+      },
+      {
+        heading: "Hairstyles: choose an effect, not a rule",
+        subsections: [
+          {
+            heading: "For oval proportions",
+            paragraphs: ["Oval proportions can work with many silhouettes. A blunt bob, long layers, or a fringe can each create a different effect. The practical question is where a style places width and height, then whether that effect suits your hair texture, density, growth pattern, maintenance routine, and preference."],
+          },
+          {
+            heading: "For square proportions",
+            paragraphs: ["Soft layers, movement around the jaw, and side-swept or broken-up fringe can contrast with a structured lower outline. Blunt jaw-length cuts can emphasize that structure instead. Neither choice is wrong: choose softness if you want less jaw emphasis, or crisp lines if you enjoy definition."],
+          },
+        ],
+      },
+      {
+        heading: "Glasses: fit comes before face shape",
+        paragraphs: [
+          "Oval proportions can accommodate many frame geometries when the bridge, lens position, temple length, and width fit correctly. Angular frames add contrast; rounder frames repeat a softer outline. Square proportions can use round or oval frames for contrast, or rectangular frames for a more structured look.",
+          "Face shape is only a styling input. An eye-care professional or optician should confirm a prescription frame's fit and lenses; the [National Eye Institute notes that an optician helps select frames after an eye-care prescription](https://www.nei.nih.gov/eye-health-information/eye-conditions-and-diseases/refractive-errors/eyeglasses-refractive-errors). For more options, see the [glasses-by-face-shape guide](/glasses-by-face-shape/).",
+        ],
+      },
+      {
+        heading: "Men's haircuts: oval vs square",
+        paragraphs: [
+          "An oval outline can work with cuts ranging from crew cuts and textured quiffs to fades, depending on texture and maintenance. A square outline may pair well with height or texture on top when you want to draw attention upward, while a uniform buzz cut can make the jaw more prominent.",
+          "Treat these as visual options, not requirements. Hair density, curl pattern, recession, beard shape, upkeep, and personal style can matter more than face-shape labels.",
+        ],
+      },
+      {
+        heading: "Common identification mistakes",
+        bullets: [
+          "Measuring with hair covering the forehead or jaw, which changes the visible outline.",
+          "Using a close selfie or an angled photo instead of a straight, eye-level view.",
+          "Calling a face square because the jaw is defined, without checking upper-face width and overall length.",
+          "Confusing square with rectangle when the face is noticeably longer than it is wide. The [oval vs oblong comparison](/blog/oval-vs-oblong-face/) can help when length is the main question.",
+          "Treating any single label as exact when several proportions sit near a boundary.",
+        ],
+      },
+      {
+        heading: "The practical answer",
+        paragraphs: [
+          "Start with length and maximum width, then trace the jawline. Choose oval when the face is visibly longer than wide and the lower outline tapers smoothly. Choose square when width continues through the forehead and jaw and the lower corners remain more defined.",
+          "If the result sits between both, describe the features you see and choose styling guidance by the effect you want. You can also [analyze a clear front-facing photo](/#detector) privately in your browser, then compare its explanation with the manual guide.",
+        ],
+      },
+    ],
+    faqs: [
+      { question: "Can a face be both oval and square?", answer: "Yes. Some faces have noticeable jaw angles but more length than a classic square outline. A description such as soft square or oval-square can be more useful than forcing one exact label." },
+      { question: "Which face shape is more common?", answer: "There is no reliable universal count for informal face-shape categories. Frequencies depend on the population studied and the measurements or visual definitions used." },
+      { question: "Does a square face shape change with age or weight?", answer: "Changes in facial fullness and skin can make a jaw look softer or sharper, while the underlying relationship among facial bones remains important. This can shift a visual impression near a category boundary." },
+      { question: "Is an oval face shape considered ideal?", answer: "No face shape is inherently ideal. Oval is often described as balanced in styling discussions, while square faces offer a distinctly structured outline. Styling guidance is optional and personal preference comes first." },
+    ],
+    related: [
+      { href: "/face-shapes/oval/", label: "Oval face guide", description: "Review the softly tapered, longer-than-wide pattern." },
+      { href: "/face-shapes/square/", label: "Square face guide", description: "Check how upper-face and jaw width work together." },
+      { href: "/how-to-find-your-face-shape/", label: "How to find your face shape", description: "Use a consistent photo and manual comparison method." },
+      { href: "/blog/oval-vs-oblong-face/", label: "Oval vs oblong face", description: "Compare two longer face-shape patterns." },
+      detectorLink,
+    ],
+  },
 ];

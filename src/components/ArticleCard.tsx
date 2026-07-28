@@ -6,9 +6,9 @@ import { formatContentDate, readingTime } from "@/lib/content";
 export default function ArticleCard({ article, featured = false }: { article: ContentPage; featured?: boolean }) {
   return (
     <article className={`article-card${featured ? " article-card-featured" : ""}`}>
-      <Link className="article-card-image" href={article.path} aria-label={`Read ${article.title}`}>
-        <Image src={article.image ?? "/og/blog.svg"} alt={article.imageAlt ?? ""} width={1200} height={675} sizes={featured ? "(max-width: 800px) 100vw, 58vw" : "(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"} />
-      </Link>
+      {article.image && <Link className="article-card-image" href={article.path} aria-label={`Read ${article.title}`}>
+        <Image src={article.image} alt={article.imageAlt ?? ""} width={1200} height={675} sizes={featured ? "(max-width: 800px) 100vw, 58vw" : "(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"} />
+      </Link>}
       <div className="article-card-content">
         <h2><Link href={article.path}>{article.title}</Link></h2>
         <p>{article.description}</p>

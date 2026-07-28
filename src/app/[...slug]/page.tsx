@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const page = pageByPath.get(pathFromSlug(slug));
   if (!page) return {};
-  const image = page.image ?? siteConfig.defaultSocialImage;
+  const image = page.image;
   const isArticle = page.kind === "article";
   const fullTitle = page.seoTitle.includes(siteConfig.shortBrandName)
     ? page.seoTitle
@@ -29,9 +29,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     authors: isArticle ? [{ name: siteConfig.authorName, url: absoluteUrl(siteConfig.authorPath) }] : undefined,
     alternates: { canonical: absoluteUrl(page.path) },
     openGraph: isArticle
-      ? { title: fullTitle, description: page.description, url: absoluteUrl(page.path), type: "article", publishedTime: page.published, modifiedTime: page.modified !== page.published ? page.modified : undefined, images: [{ url: image, width: 1200, height: 675, alt: page.imageAlt ?? page.title }] }
-      : { title: fullTitle, description: page.description, url: absoluteUrl(page.path), type: "website", images: [{ url: image, width: 1200, height: image.endsWith(".jpg") ? 675 : 630, alt: page.imageAlt ?? page.title }] },
-    twitter: { card: "summary_large_image", title: fullTitle, description: page.description, images: [image] },
+      ? { title: fullTitle, description: page.description, url: absoluteUrl(page.path), type: "article", publishedTime: page.published, modifiedTime: page.modified !== page.published ? page.modified : undefined, ...(image ? { images: [{ url: image, width: 1200, height: 675, alt: page.imageAlt ?? page.title }] } : {}) }
+      : { title: fullTitle, description: page.description, url: absoluteUrl(page.path), type: "website", ...(image ? { images: [{ url: image, width: 1200, height: image.endsWith(".jpg") ? 675 : 630, alt: page.imageAlt ?? page.title }] } : {}) },
+    twitter: { card: image ? "summary_large_image" : "summary", title: fullTitle, description: page.description, ...(image ? { images: [image] } : {}) },
   };
 }
 
