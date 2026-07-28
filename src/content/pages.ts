@@ -1,6 +1,7 @@
 import type { ContentPage } from "./types";
 import { comparisonHeaders, comparisonRows } from "./shared";
 import { newArticles } from "./newArticles";
+import { articleEnhancements } from "./articleEnhancements";
 
 const published = "2026-07-10";
 const detectorLink = {
@@ -9,7 +10,7 @@ const detectorLink = {
   description: "Use the private browser-based estimator with a clear front-facing image.",
 };
 
-export const pages: ContentPage[] = [
+const contentPages: ContentPage[] = [
   {
     path: "/face-shapes/",
     title: "The 7 Face Shapes Explained",
@@ -602,6 +603,13 @@ export const pages: ContentPage[] = [
     related: [{ href: "/about/", label: "About the project", description: "Learn the website's purpose and high-level tool design." }, { href: "/contact/", label: "Submit a correction", description: "Report a specific page or technical issue." }, { href: "/disclaimer/", label: "Read the limitations", description: "Understand what the tool and content do not claim." }],
   },
 ];
+
+export const pages = contentPages.map((page) => {
+  const enhancement = articleEnhancements[page.path];
+  return enhancement
+    ? { ...page, modified: "2026-07-28", sections: [...page.sections, ...enhancement.sections], faqs: [...(page.faqs ?? []), ...enhancement.faqs] }
+    : page;
+});
 
 export const blogArticles = pages.filter((page) => page.kind === "article");
 export const pageByPath = new Map(pages.map((page) => [page.path, page]));
