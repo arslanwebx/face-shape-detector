@@ -2,8 +2,9 @@ import { blogArticles } from "@/content/pages";
 import ArticleCard from "./ArticleCard";
 
 export default function BlogArchive() {
-  const featured = blogArticles.find((article) => article.featured) ?? blogArticles[0];
-  const remaining = blogArticles.filter((article) => article.path !== featured.path);
+  const articles = [...blogArticles].sort((first, second) => second.published.localeCompare(first.published));
+  const featured = articles[0];
+  const remaining = articles.slice(1);
 
   return (
     <section className="blog-library" aria-labelledby="all-articles-heading">
