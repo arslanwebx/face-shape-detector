@@ -7,16 +7,16 @@ import { absoluteUrl, siteConfig } from "@/config/site";
 import { shapes } from "@/content/shared";
 
 export const metadata: Metadata = {
-  title: { absolute: "Free Face Shape Detector Online | Face Shape Detector" },
+  title: { absolute: "Free Face Shape Detector Online" },
   description: "Upload a photo to privately estimate your face shape online. Compare oval, round, square, heart, diamond, oblong and triangle face shapes.",
   alternates: { canonical: absoluteUrl("/") },
   openGraph: {
-    title: "Free Face Shape Detector Online | Face Shape Detector",
+    title: "Free Face Shape Detector Online",
     description: "Upload a photo to privately estimate your face shape online. Compare oval, round, square, heart, diamond, oblong and triangle face shapes.",
     url: absoluteUrl("/"),
     images: [{ url: "/og/default.svg", width: 1200, height: 630, alt: "Face Shape Detector private browser analysis" }],
   },
-  twitter: { card: "summary_large_image", title: "Free Face Shape Detector Online | Face Shape Detector", description: "Upload a photo to privately estimate your face shape online. Compare all seven common face shapes.", images: ["/og/default.svg"] },
+  twitter: { card: "summary_large_image", title: "Free Face Shape Detector Online", description: "Upload a photo to privately estimate your face shape online. Compare all seven common face shapes.", images: ["/og/default.svg"] },
 };
 
 const faqs = [

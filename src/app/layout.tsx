@@ -11,7 +11,7 @@ import { absoluteUrl, siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
-  title: { default: siteConfig.brandName, template: `%s | ${siteConfig.shortBrandName}` },
+  title: { default: siteConfig.brandName, template: "%s" },
   description: siteConfig.description,
   applicationName: siteConfig.brandName,
   alternates: { canonical: absoluteUrl("/") },

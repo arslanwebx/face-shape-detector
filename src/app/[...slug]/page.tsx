@@ -20,9 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!page) return {};
   const image = page.image;
   const isArticle = page.kind === "article";
-  const fullTitle = page.seoTitle.includes(siteConfig.shortBrandName)
-    ? page.seoTitle
-    : `${page.seoTitle} | ${siteConfig.shortBrandName}`;
+  const fullTitle = page.seoTitle.replace(/\s*\|\s*Face Shape Detector$/i, "");
   return {
     title: { absolute: fullTitle },
     description: page.description,
