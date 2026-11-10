@@ -27,6 +27,9 @@ export const viewport: Viewport = { width: "device-width", initialScale: 1, them
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+              <script src="https://quge5.com/88/tag.min.js" data-zone="308472" async data-cfasync="false"></script>
+      </head>
       <body>
         <a className="skip-link" href="#main-content">Skip to main content</a>
         <Header />
