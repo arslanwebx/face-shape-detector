@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg", apple: "/favicon.svg" },
   verification: siteConfig.searchConsoleVerification ? { google: siteConfig.searchConsoleVerification } : undefined,
+  other: { monetag: "ba3634acd3484addf8b5df7391a7ceab" },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#fbf9ff" };
